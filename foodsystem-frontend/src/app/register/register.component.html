@@ -1,0 +1,9 @@
+<div>
+  <p>用户注册</p>
+  <p>用户名:<input type="text" [(ngModel)]="userName"/></p>
+  <p>密码:<input type="password" [(ngModel)]="password"/></p>
+  <p>性别:<input type="radio" value="0" [(ngModel)]="userSex"/>男<input type="radio" value="1" [(ngModel)]="userSex"/>女</p>
+  <p>地址:<input type="text" [(ngModel)]="userAddress"/></p>
+  <p>电话:<input type="text" [(ngModel)]="userPhone"/></p>
+  <button (click)="register()">注册</button>
+</div>
