@@ -5,7 +5,10 @@ import com.graduation.foodsystem.model.BackJson;
 import com.graduation.foodsystem.model.User;
 import com.graduation.foodsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public BackJson register(User user) {
         BackJson backJson = new BackJson();
+        user.setIsdelete(0);//设置用户的状态为可见
         int value = 0;
         try {
             value = userMapper.insert(user);
@@ -63,6 +67,62 @@ public class UserServiceImpl implements UserService {
                 backJson.setStatus(true);
                 backJson.setValue(user);
             }
+        }
+        return backJson;
+    }
+
+    /**
+     * 修改用户信息——用户自己可以修改、管理员可以修改
+     * @param user
+     * @return
+     */
+    @Override
+    public BackJson changeUserInfo(User user) {
+        BackJson backJson = new BackJson();
+        int result = userMapper.updateByPrimaryKeySelective(user);//如果没填写的内容则不会被修改
+        if(result == 0) {
+            backJson.setStatus(false);
+            backJson.setValue("修改失败!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue("信息修改成功!");
+        }
+        return backJson;
+    }
+
+    /**
+     * 删除指定用户——将isdelete变成1
+     * @param user
+     * @return
+     */
+    @Override
+    public BackJson deleteUserInfo(User user) {
+        BackJson backJson = new BackJson();
+        int result = userMapper.deleteUser(user);
+        if(result == 0) {
+            backJson.setStatus(false);
+            backJson.setValue("删除失败!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue("删除成功!");
+        }
+        return backJson;
+    }
+
+    /**
+     * 获得所有用户列表
+     * @return
+     */
+    @Override
+    public BackJson getAllUserList() {
+        BackJson backJson = new BackJson();
+        List<User> userList = userMapper.selectAll();
+        if(userList == null) {
+            backJson.setStatus(false);
+            backJson.setValue("当前系统中没有用户!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(userList);
         }
         return backJson;
     }

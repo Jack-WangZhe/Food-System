@@ -10,4 +10,10 @@ public interface UserService {
     public BackJson register(User user);
 
     public BackJson login(String username, String password);
+
+    BackJson changeUserInfo(User user);
+
+    BackJson deleteUserInfo(User user);
+
+    BackJson getAllUserList();
 }
