@@ -75,4 +75,15 @@ public class ImageServiceImpl implements ImageService {
         }
         return backJson;
     }
+
+    /**
+     * 向image表中插入数据
+     * @param image
+     * @return
+     */
+    @Override
+    public int addImage(Image image) {
+        image.setIsdelete(0);
+        return imageMapper.insertSelective(image);
+    }
 }

@@ -1,5 +1,7 @@
 package com.graduation.foodsystem.model;
 
+import java.util.List;
+
 public class Market {
     /**
      *
@@ -230,5 +232,49 @@ public class Market {
      */
     public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
+    }
+
+    //店铺信息，如店铺外景等
+    public List<Image> marketLocationPics;
+
+    //店铺注册信息，如营业许可证等
+    public List<Image> marketInfoPics;
+
+    //店铺商品列表
+    public List<Product> products;
+
+    //店铺订单列表
+    public List<Order> orders;
+
+    public List<Image> getMarketLocationPics() {
+        return marketLocationPics;
+    }
+
+    public void setMarketLocationPics(List<Image> marketLocationPics) {
+        this.marketLocationPics = marketLocationPics;
+    }
+
+    public List<Image> getMarketInfoPics() {
+        return marketInfoPics;
+    }
+
+    public void setMarketInfoPics(List<Image> marketInfoPics) {
+        this.marketInfoPics = marketInfoPics;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

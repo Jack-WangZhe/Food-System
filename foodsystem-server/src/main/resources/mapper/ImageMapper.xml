@@ -135,4 +135,8 @@
       isdelete = #{isdelete,jdbcType=INTEGER}
     where image_id = #{imageId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByObjectId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from image where object_id = #{objectId,jdbcType=INTEGER}
+  </select>
 </mapper>
