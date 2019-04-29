@@ -53,7 +53,9 @@ public interface MarketMapper {
      */
     int updateByPrimaryKey(Market record);
 
-    Market selectByUserId();
+    Market selectByUserId(Integer userId);
 
     List<Market> selectAll();
+
+    int updateMarketInfoToDelete(Integer marketId);
 }

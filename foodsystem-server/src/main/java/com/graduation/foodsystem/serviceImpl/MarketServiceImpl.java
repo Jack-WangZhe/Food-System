@@ -5,7 +5,7 @@ import com.graduation.foodsystem.mapper.MarketMapper;
 import com.graduation.foodsystem.model.BackJson;
 import com.graduation.foodsystem.model.Image;
 import com.graduation.foodsystem.model.Market;
-import com.graduation.foodsystem.service.CategoryService;
+import com.graduation.foodsystem.service.ImageService;
 import com.graduation.foodsystem.service.MarketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,8 @@ public class MarketServiceImpl implements MarketService {
     MarketMapper marketMapper;
     @Autowired
     ImageMapper imageMapper;
+    @Autowired
+    ImageService imageService;
 
     /**
      * 获得指定用户的店铺
@@ -28,7 +30,7 @@ public class MarketServiceImpl implements MarketService {
     @Override
     public BackJson getMarketByUserId(int userId) {
         BackJson backJson = new BackJson();
-        Market market = marketMapper.selectByUserId();
+        Market market = marketMapper.selectByUserId(userId);
         if(market == null) {
             backJson.setStatus(false);
             backJson.setValue("查找失败,没有对应的店铺!");
@@ -114,11 +116,36 @@ public class MarketServiceImpl implements MarketService {
 
     /**
      * 修改market信息
-     * @param marketId
+     * @param market
      * @return
      */
     @Override
-    public BackJson changeMarketInfo(int marketId) {
+    public BackJson changeMarketInfo(Market market) {
+        BackJson backJson = new BackJson();
+        int result = marketMapper.updateByPrimaryKeySelective(market);
+        if(result == 0){
+            backJson.setStatus(false);
+            backJson.setValue("修改失败!");
+        }else {
+            List<Image> imageLocationPics = market.getMarketLocationPics();
+            for(Image image: imageLocationPics) {
+                image.setIsdelete(0);
+                image.setImageFrom("market");
+                image.setImageType("location");
+                image.setObjectId(market.getMarketId());
+                imageService.uploadImage(image);
+            }
+            List<Image> marketInfoPics = market.getMarketInfoPics();
+            for(Image image: marketInfoPics) {
+                image.setIsdelete(0);
+                image.setImageFrom("market");
+                image.setImageType("info");
+                image.setObjectId(market.getMarketId());
+                imageService.uploadImage(image);
+            }
+            backJson.setStatus(true);
+            backJson.setValue(market);
+        }
         return null;
     }
 
@@ -129,6 +156,15 @@ public class MarketServiceImpl implements MarketService {
      */
     @Override
     public BackJson deleteMarketInfo(int marketId) {
-        return null;
+        BackJson backJson = new BackJson();
+        int result = marketMapper.updateMarketInfoToDelete(marketId);
+        if(result == 0){
+            backJson.setStatus(false);
+            backJson.setValue("删除失败!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue("删除成功!");
+        }
+        return backJson;
     }
 }

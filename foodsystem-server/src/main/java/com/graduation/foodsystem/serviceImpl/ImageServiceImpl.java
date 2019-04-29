@@ -86,4 +86,15 @@ public class ImageServiceImpl implements ImageService {
         image.setIsdelete(0);
         return imageMapper.insertSelective(image);
     }
+
+    @Override
+    public boolean uploadImage(Image image) {
+        Image result = imageMapper.selectByImageUrl(image.getImageUrl());
+        if(result == null){
+            imageMapper.insert(image);
+        }
+        return true;
+    }
+
+
 }

@@ -143,4 +143,8 @@
   <select id="selectByImageInfo" parameterType="java.util.Map" resultMap="BaseResultMap">
     select * from image where image_type=#{imageType} and image_from=#{imageFrom} and object_id=#{objectId} and isdelete=0
   </select>
+  
+  <select id="selectByImageUrl" parameterType="com.graduation.foodsystem.model.Image" resultMap="BaseResultMap">
+    select * from image where image_url = #{imageUrl,jdbcType=VARCHAR}
+  </select>
 </mapper>

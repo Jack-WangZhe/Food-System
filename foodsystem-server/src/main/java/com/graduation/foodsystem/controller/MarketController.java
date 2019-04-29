@@ -55,12 +55,12 @@ public class MarketController {
 
     /**
      * 修改店铺信息
-     * @param marketId
+     * @param market
      * @return
      */
-    @PutMapping(value = "/{marketId}")
-    public BackJson changeMarketInfo(@PathVariable("marketId")int marketId) {
-        return marketService.changeMarketInfo(marketId);
+    @PutMapping
+    public BackJson changeMarketInfo(@RequestBody Market market) {
+        return marketService.changeMarketInfo(market);
     }
 
     /**

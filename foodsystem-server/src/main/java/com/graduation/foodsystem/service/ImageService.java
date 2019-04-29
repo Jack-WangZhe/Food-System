@@ -13,4 +13,6 @@ public interface ImageService {
     BackJson uploadImage(MultipartFile file);
 
     int addImage(Image image);
+
+    boolean uploadImage(Image image);
 }

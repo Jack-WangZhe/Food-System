@@ -57,4 +57,6 @@ public interface ImageMapper {
     List<Image> selectByObjectId(int objectId);
 
     List<Image> selectByImageInfo(Map<String , Object> map);
+
+    Image selectByImageUrl(String imageUrl);
 }

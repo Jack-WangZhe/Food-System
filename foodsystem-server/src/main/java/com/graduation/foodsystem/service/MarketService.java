@@ -15,7 +15,7 @@ public interface MarketService {
 
     BackJson getAllMarket();
 
-    BackJson changeMarketInfo(int marketId);
+    BackJson changeMarketInfo(Market market);
 
     BackJson deleteMarketInfo(int marketId);
 }
