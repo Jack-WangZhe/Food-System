@@ -1,5 +1,7 @@
 package com.graduation.foodsystem.model;
 
+import java.util.List;
+
 public class Product {
     /**
      *
@@ -230,5 +232,27 @@ public class Product {
      */
     public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
+    }
+
+    //产品类别
+    public Category category;
+
+    //产品图片
+    public List<Image> productPics;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Image> getProductPics() {
+        return productPics;
+    }
+
+    public void setProductPics(List<Image> productPics) {
+        this.productPics = productPics;
     }
 }

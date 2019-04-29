@@ -1,6 +1,7 @@
 package com.graduation.foodsystem.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     /**
@@ -265,5 +266,38 @@ public class Order {
      */
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    //一个订单中有多个商品
+    private List<Product> productList;
+
+    //订单的下单人
+    private User user;
+
+    //订单的评价
+    private Evaluate evaluate;
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Evaluate getEvaluate() {
+        return evaluate;
+    }
+
+    public void setEvaluate(Evaluate evaluate) {
+        this.evaluate = evaluate;
     }
 }
