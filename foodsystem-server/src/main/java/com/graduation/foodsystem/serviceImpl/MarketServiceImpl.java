@@ -105,8 +105,11 @@ public class MarketServiceImpl implements MarketService {
         if(markets == null){
             backJson.setStatus(false);
             backJson.setValue("查询失败,当前没有商家注册!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(markets);
         }
-        return null;
+        return backJson;
     }
 
     /**
