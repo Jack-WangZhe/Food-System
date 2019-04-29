@@ -147,4 +147,11 @@
       isdelete = #{isdelete,jdbcType=INTEGER}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByMarketId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where market_id = #{marketId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.graduation.foodsystem.mapper;
 import com.graduation.foodsystem.model.Image;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ImageMapper {
     /**
@@ -54,4 +55,6 @@ public interface ImageMapper {
     int updateByPrimaryKey(Image record);
 
     List<Image> selectByObjectId(int objectId);
+
+    List<Image> selectByImageInfo(Map<String , Object> map);
 }

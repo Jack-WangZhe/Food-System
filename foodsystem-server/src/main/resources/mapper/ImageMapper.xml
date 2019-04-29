@@ -139,4 +139,8 @@
   <select id="selectByObjectId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from image where object_id = #{objectId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByImageInfo" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from image where image_type=#{imageType} and image_from=#{imageFrom} and object_id=#{objectId} and isdelete=0
+  </select>
 </mapper>
