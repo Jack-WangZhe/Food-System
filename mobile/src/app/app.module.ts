@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgZorroAntdMobileModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [Toast],
   bootstrap: [AppComponent]

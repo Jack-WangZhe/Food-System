@@ -1,3 +1,22 @@
-<p>
-  register works!
-</p>
+<div class="center-background">
+  <div class="register-style">用户注册</div>
+  <div style="margin-top:30px;">
+    <InputItem [(ngModel)]="username" type="text" [clear]="true" [placeholder]="'请输入用户名...'">用户名</InputItem>
+    <InputItem [(ngModel)]="password" type="password" [clear]="true" [placeholder]="'请输入密码...'">密码</InputItem>
+    <InputItem [(ngModel)]="password_twice" type="password" [clear]="true" [placeholder]="'请输入确认密码...'">确认密码</InputItem>
+    <InputItem [(ngModel)]="useraddress" type="text" [clear]="true" [placeholder]="'请输入地址...'">地址</InputItem>
+    <List renderHeader="性别">
+      <RadioItemGroup [(ngModel)]="usersex">
+        <RadioItem name="usersex" value="0">女</RadioItem>
+        <RadioItem name="usersex" value="1">男</RadioItem>
+      </RadioItemGroup>
+    </List>
+    <InputItem [(ngModel)]="userphone" type="phone" [clear]="true" [placeholder]="'请输入手机号...'">手机号</InputItem>
+  </div>
+  <div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button [type]="'primary'" (onClick)="register()">注册</div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button (onClick)="login()">登录</div>
+  </div>
+</div>
