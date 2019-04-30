@@ -32,7 +32,7 @@
     select 
     <include refid="Base_Column_List" />
     from product
-    where product_id = #{productId,jdbcType=INTEGER}
+    where product_id = #{productId,jdbcType=INTEGER} and isdelete=0
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -154,6 +154,6 @@
     select
     <include refid="Base_Column_List" />
     from product
-    where market_id = #{marketId,jdbcType=INTEGER}
+    where market_id = #{marketId,jdbcType=INTEGER} and isdelete=0
   </select>
 </mapper>

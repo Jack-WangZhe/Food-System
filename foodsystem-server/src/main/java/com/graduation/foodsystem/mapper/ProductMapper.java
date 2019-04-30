@@ -54,4 +54,8 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> selectByMarketId(Integer marketId);
+
+    int deleteByProductId(int productId);
+
+    List<Product> selectAllProductByMarketId(int marketId);
 }

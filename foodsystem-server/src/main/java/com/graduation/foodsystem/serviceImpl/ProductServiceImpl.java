@@ -5,6 +5,7 @@ import com.graduation.foodsystem.mapper.ProductMapper;
 import com.graduation.foodsystem.model.BackJson;
 import com.graduation.foodsystem.model.Image;
 import com.graduation.foodsystem.model.Product;
+import com.graduation.foodsystem.service.ImageService;
 import com.graduation.foodsystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
     @Autowired
     ImageMapper imageMapper;
+    @Autowired
+    ImageService imageService;
 
     /**
      * 添加商品
@@ -46,23 +49,87 @@ public class ProductServiceImpl implements ProductService {
         return backJson;
     }
 
+    /**
+     * 修改商品信息
+     * @param product
+     * @return
+     */
     @Override
     public BackJson changeProductInfo(Product product) {
-        return null;
+        BackJson backJson = new BackJson();
+        int result = productMapper.updateByPrimaryKey(product);
+        if(result == 0) {
+            backJson.setStatus(false);
+            backJson.setValue("商品信息修改失败!");
+        }else {
+            List<Image> imageInfoPics = product.getProductPics();
+            for(Image image: imageInfoPics) {
+                image.setIsdelete(0);
+                image.setImageFrom("production");
+                image.setImageType("info");
+                image.setObjectId(product.getProductId());
+                imageService.uploadImage(image);
+            }
+            backJson.setStatus(true);
+            backJson.setValue(product);
+        }
+        return backJson;
     }
 
+    /**
+     * 删除商品
+     * @param productId
+     * @return
+     */
     @Override
     public BackJson deleteProduct(int productId) {
+        BackJson backJson = new BackJson();
+        int result = productMapper.deleteByProductId(productId);
+        if(result == 0) {
+            backJson.setStatus(false);
+            backJson.setValue("商品删除失败!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue("商品删除成功!");
+        }
         return null;
     }
 
+    /**
+     * 通过productId查询商品信息
+     * @param productId
+     * @return
+     */
     @Override
     public BackJson getProductInfo(int productId) {
-        return null;
+        BackJson backJson = new BackJson();
+        Product product = productMapper.selectByPrimaryKey(productId);
+        if(product == null) {
+            backJson.setStatus(false);
+            backJson.setValue("查询失败,该商品不存在!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(product);
+        }
+        return backJson;
     }
 
+    /**
+     * 通过marketId查询所有的店铺信息
+     * @param marketId
+     * @return
+     */
     @Override
     public BackJson getAllProductInfoByMarketId(int marketId) {
-        return null;
+        BackJson backJson = new BackJson();
+        List<Product> products = productMapper.selectAllProductByMarketId(marketId);
+        if(products == null) {
+            backJson.setStatus(false);
+            backJson.setValue("查询失败,店铺不存在商品!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(products);
+        }
+        return backJson;
     }
 }
