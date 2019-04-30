@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,23 +9,34 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http'; 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShopsComponent } from './shops/shops.component';
+import { OrdersComponent } from './orders/orders.component';
+import { SelfComponent } from './self/self.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ShopsComponent,
+    OrdersComponent,
+    SelfComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgZorroAntdMobileModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [Toast],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }
