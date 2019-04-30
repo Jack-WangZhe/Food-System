@@ -55,15 +55,15 @@ public interface OrderMapper {
 
     List<Order> selectByMarketId(Integer marketId);
 
-    int deleteByOrderId(int orderId);
+    int deleteByOrderId(Integer orderId);
 
-    List<Order> selectByMarketIdStatusIsOpen(int marketId);
+    List<Order> selectByMarketIdStatusIsOpen(Integer marketId);
 
-    List<Order> selectByMarketIdStatusIsClosed(int marketId);
+    List<Order> selectByMarketIdStatusIsClosed(Integer marketId);
 
-    List<Order> selectByUserId(int userId);
+    List<Order> selectByUserId(Integer userId);
 
-    List<Order> selectByUserIdStatusIsOpen(int userId);
+    List<Order> selectByUserIdStatusIsOpen(Integer userId);
 
-    List<Order> selectByUserIdStatusIsClosed(int userId);
+    List<Order> selectByUserIdStatusIsClosed(Integer userId);
 }
