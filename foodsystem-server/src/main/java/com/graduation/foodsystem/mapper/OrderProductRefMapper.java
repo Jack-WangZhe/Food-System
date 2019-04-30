@@ -1,6 +1,9 @@
 package com.graduation.foodsystem.mapper;
 
 import com.graduation.foodsystem.model.OrderProductRef;
+import com.graduation.foodsystem.model.Product;
+
+import java.util.List;
 
 public interface OrderProductRefMapper {
     /**
@@ -50,4 +53,7 @@ public interface OrderProductRefMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(OrderProductRef record);
+
+    //通过orderId获得所有的product
+    List<OrderProductRef> selectByOrderId(Integer orderId);
 }

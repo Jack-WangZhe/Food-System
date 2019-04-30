@@ -9,6 +9,8 @@
     <id column="ref_id" jdbcType="INTEGER" property="refId" />
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
     <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <association property="order" column="order_id" select="com.graduation.foodsystem.mapper.OrderMapper.selectByPrimaryKey"></association>
+    <association property="product" column="product_id" select="com.graduation.foodsystem.mapper.ProductMapper.selectByPrimaryKey"></association>
   </resultMap>
   <sql id="Base_Column_List">
     <!--
@@ -100,4 +102,11 @@
       product_id = #{productId,jdbcType=INTEGER}
     where ref_id = #{refId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_product_ref
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
 </mapper>

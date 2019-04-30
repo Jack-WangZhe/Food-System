@@ -54,4 +54,16 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
     List<Order> selectByMarketId(Integer marketId);
+
+    int deleteByOrderId(int orderId);
+
+    List<Order> selectByMarketIdStatusIsOpen(int marketId);
+
+    List<Order> selectByMarketIdStatusIsClosed(int marketId);
+
+    List<Order> selectByUserId(int userId);
+
+    List<Order> selectByUserIdStatusIsOpen(int userId);
+
+    List<Order> selectByUserIdStatusIsClosed(int userId);
 }

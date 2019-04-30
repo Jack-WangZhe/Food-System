@@ -236,7 +236,7 @@ public class Order {
     }
 
     //一个订单中有多个商品
-    private List<Product> productList;
+    private List<OrderProductRef> productList;
 
     //订单的下单人
     private User user;
@@ -244,11 +244,11 @@ public class Order {
     //订单的评价
     private Evaluate evaluate;
 
-    public List<Product> getProductList() {
+    public List<OrderProductRef> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
+    public void setProductList(List<OrderProductRef> productList) {
         this.productList = productList;
     }
 
