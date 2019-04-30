@@ -14,7 +14,7 @@
     <result column="orderstatus" jdbcType="INTEGER" property="orderstatus" />
     <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
     <association property="user" column="user_id" select="com.graduation.foodsystem.mapper.UserMapper.selectByPrimaryKey"/>
-    <association property="evaluate" column="evaluate" select="com.graduation.foodsystem.mapper.EvaluateMapper.selectByPrimaryKey"/>
+    <association property="evaluate" column="order_id" select="com.graduation.foodsystem.mapper.EvaluateMapper.selectByOrderId"/>
     <collection property="productList" column="order_id" javaType="java.util.List" select="com.graduation.foodsystem.mapper.OrderProductRefMapper.selectByOrderId"></collection>
   </resultMap>
   <sql id="Base_Column_List">

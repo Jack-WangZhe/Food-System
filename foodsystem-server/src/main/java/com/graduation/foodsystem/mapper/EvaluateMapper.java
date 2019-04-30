@@ -1,6 +1,9 @@
 package com.graduation.foodsystem.mapper;
 
 import com.graduation.foodsystem.model.Evaluate;
+import io.swagger.models.auth.In;
+
+import java.util.List;
 
 public interface EvaluateMapper {
     /**
@@ -50,4 +53,10 @@ public interface EvaluateMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Evaluate record);
+
+    Evaluate selectByOrderId(Integer orderId);
+
+    int deleteByEvaluateId(Integer evaluateId);
+
+    List<Evaluate> selectByUserId(Integer userId);
 }
