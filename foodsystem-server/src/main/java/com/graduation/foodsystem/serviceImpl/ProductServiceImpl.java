@@ -122,7 +122,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public BackJson getAllProductInfoByMarketId(int marketId) {
         BackJson backJson = new BackJson();
-        List<Product> products = productMapper.selectAllProductByMarketId(marketId);
+        List<Product> products = productMapper.selectByMarketId(marketId);
         if(products == null) {
             backJson.setStatus(false);
             backJson.setValue("查询失败,店铺不存在商品!");
