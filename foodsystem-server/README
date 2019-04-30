@@ -3,3 +3,24 @@
 ```java
     java -jar mybatis-generator-core-1.3.7.jar -configfile generator.xml -overwrite
 ```
+
+删除了order表中的product_id字段
+```sql
+ALTER TABLE `foodsystem`.`order` DROP FOREIGN KEY `product_orderforeign_id`;
+ALTER TABLE `foodsystem`.`order` DROP INDEX `product_orderforeign_id_idx`;
+ALTER TABLE `foodsystem`.`order` DROP COLUMN `product_id`;
+```
+
+添加了order_product_ref表存储order和product之间的关系
+```sql
+CREATE TABLE `order_product_ref` (
+  `ref_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ref_id`),
+  KEY `product_id` (`product_id`),
+  KEY `order_id` (`order_id`),
+  CONSTRAINT `order_refforeign_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `product_refforeign_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+```
