@@ -1,0 +1,16 @@
+<div class="center-background">
+  <div class="login-style">用户登录</div>
+  <div>
+    <img class="photo-style" src="/assets/images/photo.png"/>
+  </div>
+  <div style="margin-top:30px;">
+    <InputItem type="text" [clear]="true" [placeholder]="'请输入用户名...'">用户名</InputItem>
+    <InputItem type="password" [clear]="true" [placeholder]="'请输入密码...'">密码</InputItem>
+  </div>
+  <div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button [type]="'primary'">登录</div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button (onClick)="onClick()">注册</div>
+  </div>
+</div>
