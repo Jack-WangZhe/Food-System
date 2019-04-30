@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
+import { NgZorroAntdMobileModule, Toast } from 'ng-zorro-antd-mobile';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgZorroAntdMobileModule
+    NgZorroAntdMobileModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Toast],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

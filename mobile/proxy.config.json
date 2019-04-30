@@ -1,0 +1,8 @@
+{
+    "/user/login": {
+        "target":"http://localhost:1234"
+    },
+    "/user/register": {
+        "target":"http://localhost:1234"
+    }
+}

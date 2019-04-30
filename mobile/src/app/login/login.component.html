@@ -4,13 +4,13 @@
     <img class="photo-style" src="/assets/images/photo.png"/>
   </div>
   <div style="margin-top:30px;">
-    <InputItem type="text" [clear]="true" [placeholder]="'请输入用户名...'">用户名</InputItem>
-    <InputItem type="password" [clear]="true" [placeholder]="'请输入密码...'">密码</InputItem>
+    <InputItem [value]="username" type="text" [clear]="true" [placeholder]="'请输入用户名...'" (onChange)="changeUsername($event)">用户名</InputItem>
+    <InputItem [value]="password" type="password" [clear]="true" [placeholder]="'请输入密码...'" (onChange)="changePassword($event)">密码</InputItem>
   </div>
   <div>
     <WhiteSpace ></WhiteSpace>
-    <div Button [type]="'primary'">登录</div>
+    <div Button [type]="'primary'" (onClick)="login()">登录</div>
     <WhiteSpace ></WhiteSpace>
-    <div Button (onClick)="onClick()">注册</div>
+    <div Button (onClick)="register()">注册</div>
   </div>
 </div>
