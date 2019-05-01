@@ -5,6 +5,9 @@
     "/user/register": {
         "target":"http://localhost:1234"
     },
+    "/user/info": {
+        "target":"http://localhost:1234"
+    },
     "/image/upload": {
         "target":"http://localhost:1234"
     },
