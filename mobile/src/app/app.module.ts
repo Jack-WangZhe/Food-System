@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopsComponent } from './shops/shops.component';
 import { OrdersComponent } from './orders/orders.component';
 import { SelfComponent } from './self/self.component';
+import { ApplyComponent } from './apply/apply.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { SelfComponent } from './self/self.component';
     HomeComponent,
     ShopsComponent,
     OrdersComponent,
-    SelfComponent
+    SelfComponent,
+    ApplyComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { SelfComponent } from './self/self.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FileUploadModule
   ],
   providers: [Toast],
   bootstrap: [AppComponent],
