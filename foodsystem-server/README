@@ -24,3 +24,8 @@ CREATE TABLE `order_product_ref` (
   CONSTRAINT `product_refforeign_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ```
+
+修改了image url长度
+```sql
+ALTER TABLE `foodsystem`.`image` CHANGE COLUMN `image_url` `image_url` varchar(400) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL;
+```

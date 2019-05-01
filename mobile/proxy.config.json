@@ -7,5 +7,8 @@
     },
     "/image/upload": {
         "target":"http://localhost:1234"
+    },
+    "/market": {
+        "target":"http://localhost:1234"
     }
 }

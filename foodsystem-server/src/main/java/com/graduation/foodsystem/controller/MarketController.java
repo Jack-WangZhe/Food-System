@@ -68,7 +68,7 @@ public class MarketController {
      * @param marketId
      * @return
      */
-    @DeleteMapping(value = "/{marketId")
+    @DeleteMapping(value = "/{marketId}")
     public BackJson deleteMarketInfo(@PathVariable("marketId")int marketId) {
         return marketService.deleteMarketInfo(marketId);
     }
