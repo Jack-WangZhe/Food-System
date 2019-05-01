@@ -17,5 +17,8 @@ export class UserBusinessService {
     return "/user/login";
   }
 
+ userInfo(){
+    return "/app/user/userInfo";
+  }
 
 }

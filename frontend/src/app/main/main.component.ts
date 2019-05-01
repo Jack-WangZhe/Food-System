@@ -1,10 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { HttpService } from '../shared/http/http.service';
+import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MainData } from '../main/main-model';
 import { ModalService } from '../shared/modal/modal.service';
+import { ToastService } from '../shared/toast/toast.service';
+import { UserBusinessService} from '../business-service/user/user-business.service';
+import { ToastConfig, ToastType } from '../shared/toast/toast-model';
 import { ConfirmConfig } from '../shared/modal/modal-model';
 
 import { AvatarCropperComponent } from '../business-shared/user/avatar-cropper/avatar-cropper.component';
@@ -27,6 +30,8 @@ export class MainComponent implements OnInit {
   //切换导航标识
   navClose: boolean = false;
 
+  userInfoForm: FormGroup;
+
 
 
 
@@ -42,7 +47,7 @@ export class MainComponent implements OnInit {
     menuData: [{
       "id": "1",
       "parentId": "0",
-      "name": "组件示例",
+      "name": "商家管理",
       "keyWord": "demo",
       "icon": 'fa-wrench',
       "isExpend": false,
@@ -382,13 +387,27 @@ export class MainComponent implements OnInit {
   title: string = "首页";
 
 
-  constructor(private router: Router, private modalService: ModalService, private ngbModalService: NgbModal, private appService: AppService) {
+  constructor(
+    private router: Router, 
+    private modalService: ModalService, 
+    private ngbModalService: NgbModal, 
+    private appService: AppService,
+    private httpService: HttpService,
+    private toastService: ToastService,
+    private userInfoBusinessService:UserBusinessService,
+    private formBuilder: FormBuilder,
+    ) {
     this.appService.titleEventEmitter.subscribe((value: string) => {
       if (value) {
-        this.title = value;
-      }
-    })
-  }
+        let userNameFc = new FormControl('', Validators.compose([Validators.required]));
+        let passwordFc = new FormControl('', Validators.compose([Validators.required]));
+        this.userInfoForm = this.formBuilder.group({
+          userName: userNameFc,
+          password: passwordFc
+      })
+    }
+  } 
+}
 
 
   /**
@@ -421,7 +440,29 @@ export class MainComponent implements OnInit {
    * 个人资料
    */
   userInfo() {
-    this.router.navigate(['/app/user/userInfo']);
+    if (this.userInfoForm.valid) {
+      let that = this;
+      this.httpService.get(this.userInfoBusinessService.userInfo(), {
+        username:  this.userInfoForm.controls['userName'].value,
+        password:  this.userInfoForm.controls['password'].value
+      }, function (successful, data, res) {
+        if (data.status) {
+          //将user信息存储到localstorage中
+          localStorage.clear();
+          localStorage.getItem("userInfo",JSON.stringify(data.value));
+
+          const toastCfg = new ToastConfig(ToastType.SUCCESS, '', "登陆成功!", 3000);
+          that.toastService.toast(toastCfg);
+          this.router.navigate(['/app/user/userInfo']);
+        }else {
+          const toastCfg = new ToastConfig(ToastType.ERROR, '', data.value, 3000);
+          that.toastService.toast(toastCfg);
+        }
+      }, function (successful, msg, err) {
+         const toastCfg = new ToastConfig(ToastType.ERROR, '', msg, 3000);
+         that.toastService.toast(toastCfg);
+      });
+    }
   }
 
   /**
