@@ -93,9 +93,7 @@ export class ApplyComponent implements OnInit {
   }
 
   back() {
-    if(this.source === 'shops') {
-      this.router.navigate(['/home/shops']);
-    }
+    this.router.navigate(['/home/shops']);
   }
 
   //提交申请

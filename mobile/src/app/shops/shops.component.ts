@@ -41,14 +41,17 @@ export class ShopsComponent implements OnInit {
       this.router.navigate(['/apply'],{queryParams:{'source':'shops'}})
       console.log('申请加盟店铺');
     }else if(event.index === 1){
+      this.router.navigate(['/myevaluates']);
       console.log('评价历史')
     }else {
+      this.router.navigate(['/userdetail']);
       console.log('个人信息')
     }
   }
 
   //点击每一个market
   clickMarket(market) {
+    this.router.navigate(['/marketdetail'],{queryParams:{'market':market}});
     console.log(market);
   }
 

@@ -8,6 +8,11 @@ import { ShopsComponent } from './shops/shops.component';
 import { OrdersComponent } from './orders/orders.component';
 import { SelfComponent } from './self/self.component';
 import { ApplyComponent } from './apply/apply.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
+import { ChangepassComponent } from './changepass/changepass.component';
+import { EvaluatesComponent } from './evaluates/evaluates.component';
+import { MarketdetailComponent } from './marketdetail/marketdetail.component';
+import { HistoryorderComponent } from './historyorder/historyorder.component';
 
 const routes: Routes = [{
   path:'', component:AppComponent,
@@ -22,11 +27,16 @@ const routes: Routes = [{
           path:'shops',
           component:ShopsComponent
         },
-        {path:'orders',component:OrdersComponent},
+        {path:'orders',component:HistoryorderComponent},
         {path:'self',component:SelfComponent}
       ]
     },
-    { path:'apply',component:ApplyComponent }
+    { path:'apply',component:ApplyComponent },
+    { path:'marketdetail',component:MarketdetailComponent },
+    { path:'userdetail',component: UserdetailComponent},
+    { path:'changepass',component: ChangepassComponent},
+    { path:'myorders',component: OrdersComponent},
+    { path:'myevaluates',component: EvaluatesComponent}
   ] 
 }];
 

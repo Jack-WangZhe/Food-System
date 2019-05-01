@@ -3,6 +3,39 @@
     <div style="color: #a1a1a1">不再提示</div>
   </ng-template>
 </NoticeBar>
-<p>
-  self works!
-</p>
+<List renderHeader="个人信息">
+  <ListItem [arrow]="'horizontal'"
+            [thumb]="'/assets/images/user.svg'"
+            multipleLine
+            (onClick)="toUserDetail()">{{user.userName}}
+    <Brief>电话号码:{{user.userAddress}}</Brief>
+  </ListItem>
+</List>
+<List renderHeader="基础操作">
+  <ListItem [arrow]="'horizontal'"
+            [thumb]="'/assets/images/setting.svg'"
+            multipleLine
+            (onClick)="toChangePassword()">修改密码
+    <Brief>点击执行修改密码操作</Brief>
+  </ListItem>
+  <ListItem [arrow]="'horizontal'"
+            [thumb]="'/assets/images/order.svg'"
+            multipleLine
+            (onClick)="toOrder()">我的订单
+    <Brief>点击查看我的历史订单</Brief>
+  </ListItem>
+  <ListItem [arrow]="'horizontal'"
+            [thumb]="'/assets/images/evaluate.svg'"
+            multipleLine
+            (onClick)="toEvaluate()">我的评价
+    <Brief>点击查看我的历史评价</Brief>
+  </ListItem>
+  <ListItem [arrow]="'horizontal'"
+            [thumb]="'/assets/images/beseller.svg'"
+            multipleLine
+            (onClick)="toApply()">申请加盟
+    <Brief>点击申请入驻成为商家</Brief>
+  </ListItem>
+</List>
+<WhiteSpace [size]="'lg'"></WhiteSpace>
+<div style="margin-left:3vw;margin-right:3vw;" Button [type]="'warning'" (click)="logout()">退出登录</div>

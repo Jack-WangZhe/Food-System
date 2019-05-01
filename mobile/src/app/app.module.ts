@@ -15,6 +15,11 @@ import { OrdersComponent } from './orders/orders.component';
 import { SelfComponent } from './self/self.component';
 import { ApplyComponent } from './apply/apply.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { MarketdetailComponent } from './marketdetail/marketdetail.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
+import { ChangepassComponent } from './changepass/changepass.component';
+import { EvaluatesComponent } from './evaluates/evaluates.component';
+import { HistoryorderComponent } from './historyorder/historyorder.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { FileUploadModule } from 'ng2-file-upload';
     ShopsComponent,
     OrdersComponent,
     SelfComponent,
-    ApplyComponent
+    ApplyComponent,
+    MarketdetailComponent,
+    UserdetailComponent,
+    ChangepassComponent,
+    EvaluatesComponent,
+    HistoryorderComponent
   ],
   imports: [
     BrowserModule,
