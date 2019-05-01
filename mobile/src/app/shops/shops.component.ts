@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Toast } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'app-shops',
@@ -8,11 +10,24 @@ import { Router } from '@angular/router';
 })
 export class ShopsComponent implements OnInit {
 
+  markets:Array<any> = [];
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private httpClient: HttpClient,
+    private toast: Toast
+  ) {}
 
   ngOnInit() {
+    this.httpClient.get('/market/all').subscribe((res:any)=>{
+      if(res.status) {
+        this.markets = res.value;
+      }else {
+        const toast = Toast.fail('暂时没有商家入驻...',1000);
+      }
+    },(error:any)=>{
+      //此处不做任何处理,一直加载...
+    })
   }
 
   data = [
@@ -31,4 +46,10 @@ export class ShopsComponent implements OnInit {
       console.log('个人信息')
     }
   }
+
+  //点击每一个market
+  clickMarket(market) {
+    console.log(market);
+  }
+
 }
