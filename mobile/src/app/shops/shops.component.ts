@@ -51,7 +51,7 @@ export class ShopsComponent implements OnInit {
 
   //点击每一个market
   clickMarket(market) {
-    this.router.navigate(['/marketdetail'],{queryParams:{'market':market}});
+    this.router.navigate(['/marketdetail'],{queryParams:{'market':JSON.stringify(market)}});
     console.log(market);
   }
 

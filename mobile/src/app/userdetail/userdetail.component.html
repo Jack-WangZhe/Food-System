@@ -1,2 +1,12 @@
 <Navbar [leftContent]="'回退'"
         (onLeftClick)="back()">用户详情</Navbar>
+<div>
+    <InputItem [(ngModel)]="username" type="text" [clear]="true" [placeholder]="'请输入用户名...'" disabled="true">用户名</InputItem>
+    <InputItem type="text" [clear]="true" value="{{userSex===0?'女':'男'}}" disabled="true">性别</InputItem>
+    <InputItem [(ngModel)]="useraddress" type="text" [clear]="true" [placeholder]="'请输入地址...'">地址</InputItem>
+    <InputItem [(ngModel)]="userphone" type="phone" [clear]="true" [placeholder]="'请输入手机号...'">手机号</InputItem>
+</div>
+<div style="padding-left:3vw;padding-right:3vw;">
+    <WhiteSpace ></WhiteSpace>
+    <div Button [type]="'primary'" (onClick)="resetUserInfo()">确认修改</div>
+</div>
