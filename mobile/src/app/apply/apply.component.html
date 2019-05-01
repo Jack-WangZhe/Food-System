@@ -1,0 +1,31 @@
+<Navbar [leftContent]="'回退'"
+        (onLeftClick)="back()">申请加盟</Navbar>
+<div style="padding:2%;margin-top:2vh;">
+  <div style="margin-top:30px;">
+    <InputItem [(ngModel)]="marketName" type="text" [clear]="true" [placeholder]="'请输入店铺名称...'">店铺名称</InputItem>
+    <InputItem [(ngModel)]="marketDetail" type="text" [clear]="true" [placeholder]="'请输入店铺详述...'">店铺详述</InputItem>
+    <InputItem [(ngModel)]="marketAddress" type="text" [clear]="true" [placeholder]="'请输入店铺地址...'">店铺地址</InputItem>
+    <InputItem [(ngModel)]="marketPhone" type="phone" [clear]="true" [placeholder]="'请输入店铺电话...'">店铺电话</InputItem>
+    <List renderHeader="营业执照">
+      <ImagePicker [files]="license"
+      [selectable]="license.length < 5"
+      multiple="false"
+      (onChange)="fileChange($event,'license')"
+      (onImageClick)="imageClick($event)"
+      (onAddImageClick)="addImageClick($event,'license')"></ImagePicker>
+    </List>
+    <List renderHeader="门店照片">
+      <ImagePicker [files]="shopPic"
+      [selectable]="shopPic.length < 5"
+      [multiple]="multipleTab === 1"
+      (onChange)="fileChange($event,'shop')"
+      (onImageClick)="imageClick($event)"
+      (onAddImageClick)="addImageClick($event,'shop')"></ImagePicker>
+    </List>
+    <input type="file" style="display:none;" accept='image/*' #picture ng2FileSelect [uploader]="uploader"/>
+  </div>
+  <div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button [type]="'primary'" (onClick)="apply()">提交申请</div>
+  </div>
+</div>

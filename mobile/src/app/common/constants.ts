@@ -1,0 +1,1 @@
+export const fileServer = "http://localhost:9999/";

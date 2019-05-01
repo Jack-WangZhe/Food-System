@@ -1,0 +1,9 @@
+<Navbar [leftContent]="'回退'"
+        (onLeftClick)="back()">修改密码</Navbar>
+<WhiteSpace [size]="'lg'"></WhiteSpace>
+<InputItem [(ngModel)]="oldpassword" type="password" [clear]="true" [placeholder]="'请输入旧密码...'">旧密码</InputItem>
+<InputItem [(ngModel)]="newpassword" type="password" [clear]="true" [placeholder]="'请输入新密码...'">新密码</InputItem>
+<InputItem [(ngModel)]="newpassword_twice" type="password" [clear]="true" [placeholder]="'请输入确认密码...'">确认密码</InputItem>
+
+<WhiteSpace ></WhiteSpace>
+<div Button style="margin-left:3vw;margin-right:3vw;" [type]="'primary'" (onClick)="resetPassword()">提交修改</div>

@@ -1,0 +1,61 @@
+<Navbar [leftContent]="'回退'"
+        (onLeftClick)="back()"
+        [rightContent]="rightContent">店铺详情</Navbar>
+<ng-template #rightContent>
+    <span (click)="orderFood()">点餐</span>
+</ng-template>
+<div *ngIf="!orderStatus">
+    <List renderHeader="店铺信息">
+        <Card>
+            <CardHeader [title]="'This is title'"
+                        [thumb]="'/assets/images/shop.svg'"
+                        [thumbStyle]="thumbStyle"
+                        [extra]="extra"
+            >
+                <ng-template #extra>
+                <span>this is extra</span>
+                </ng-template>
+            </CardHeader>
+            <CardBody>
+                <div>This is content of Card</div>
+            </CardBody>
+            <CardFooter [content]="'footer content'" [extra]="footerExtra">
+                <ng-template #footerExtra>
+                <div>extra footer content</div>
+                </ng-template>
+            </CardFooter>
+        </Card>
+    </List>
+    <List renderHeader="产品列表">
+        <ListItem 
+            [arrow]="'horizontal'"
+            [thumb]="'/assets/images/shop.svg'"
+            multipleLine
+            (onClick)="clickMarket(market)">产品
+            <Brief>产品描述</Brief>
+        </ListItem>
+        <ListItem 
+            [arrow]="'horizontal'"
+            [thumb]="'/assets/images/shop.svg'"
+            multipleLine
+            (onClick)="clickMarket(market)">产品
+            <Brief>产品描述</Brief>
+        </ListItem>
+    </List>      
+</div>
+<div *ngIf="orderStatus">
+    <Menu 
+        class="multi-foo-menu"
+        [data]="initData"
+        [value]="['1', ['3', '4']]"
+        [multiSelect]="true"
+        (onChange)="onChange($event)"
+        (onOk)="onOk($event)"
+        (onCancel)="onCancel()"
+        [height]="menuHeight">
+    </Menu>
+    <div *ngIf="show && !initData" style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center">
+        <ActivityIndicator [size]="'large'"></ActivityIndicator>
+    </div>
+    <div *ngIf="show" class="menu-mask3" (click)="onMaskClick()"></div>
+</div>
