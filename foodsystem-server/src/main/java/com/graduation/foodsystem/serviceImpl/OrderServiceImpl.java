@@ -218,4 +218,23 @@ public class OrderServiceImpl implements OrderService {
         }
         return backJson;
     }
+
+    /**
+     * 通过orderId查看订单详情
+     * @param orderId
+     * @return
+     */
+    @Override
+    public BackJson getOrderById(int orderId) {
+        BackJson backJson = new BackJson();
+        Order order = orderMapper.selectByPrimaryKey(orderId);
+        if(order == null){
+            backJson.setStatus(false);
+            backJson.setValue("查询失败,订单不存在!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(order);
+        }
+        return backJson;
+    }
 }

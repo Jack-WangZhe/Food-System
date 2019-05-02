@@ -1,0 +1,49 @@
+<Navbar [leftContent]="'回退'"
+        (onLeftClick)="back()">订单详情</Navbar>
+<List renderHeader="订单信息">
+  <CardHeader 
+              title="采购店铺: {{market.marketName}}"
+              [thumb]="'/assets/images/order.svg'"
+              [thumbStyle]="thumbStyle"
+              [extra]="extra"
+  >
+    <ng-template #extra>
+      <span>店铺描述: {{market.marketName}}</span>
+    </ng-template>
+  </CardHeader>
+  <CardBody>
+    <div>下单时间:{{order.orderdate | date:'yyyy-MM-dd'}}</div>
+  </CardBody>
+  <CardFooter [content]="''" [extra]="footerExtra">
+    <ng-template #footerExtra>
+      <div>订单总价: ￥{{order.orderprice}}</div>
+    </ng-template>
+  </CardFooter>
+</List>
+<List renderHeader="购置列表">
+  <ListItem
+    *ngFor="let item of order.productList"
+    [arrow]="'horizontal'"
+    [thumb]="item.product.productPics[0].imageUrl"
+    multipleLine>{{item.product.productName}} —— ¥{{item.product.productPrice}}
+    <Brief>{{item.product.category.categoryName}} : {{item.product.productDetail}}</Brief>
+  </ListItem>
+</List>
+<List renderHeader="订单状态">
+  <div style="padding:4vw;">
+    <Steps current="{{order.orderstatus+2}}" [direction]="'horizontal'">
+      <Step *ngFor="let v of steps" [title]="v.title" [description]="v.description"></Step>
+    </Steps>
+  </div>
+</List>
+<List *ngIf="order.orderstatus===1" renderHeader="订单评价">
+  <!-- 如果没有写过evaluate则填写 -->
+  <div *ngIf="!order.evaluate">
+    <TextareaItem [rows]="4" [placeholder]="'请填写您的评价信息'" [(ngModel)]="evaluteInfo"></TextareaItem>
+    <div Button style="margin:3vw" [type]="'primary'" (onClick)="sendEvaluate()">提交评价</div>
+  </div>
+  <!-- 如果写过就不写,只能看 -->
+  <div *ngIf="order.evaluate">
+    <TextareaItem title="历史评价" [disabled]="true" [(ngModel)]="order.evaluate.evaluateDetail"></TextareaItem>
+  </div>
+</List>

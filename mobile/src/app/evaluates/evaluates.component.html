@@ -1,2 +1,10 @@
 <Navbar [leftContent]="'回退'"
         (onLeftClick)="back()">评价历史</Navbar>
+<ListItem
+    *ngFor="let evaluate of evaluates"
+    [arrow]="'horizontal'"
+    [thumb]="'assets/images/evaluate.svg'"
+    multipleLine
+    (onClick)="clickOrder(evaluate.order)">评价店铺: {{evaluate.market.marketName}}
+    <Brief>评价内容: {{evaluate.evaluateDetail}}</Brief>
+</ListItem>

@@ -7,55 +7,51 @@
 <div *ngIf="!orderStatus">
     <List renderHeader="店铺信息">
         <Card>
-            <CardHeader [title]="'This is title'"
-                        [thumb]="'/assets/images/shop.svg'"
+            <CardHeader [title]="market.marketName"
+                        [thumb]="market.marketLocationPics[0].imageUrl"
                         [thumbStyle]="thumbStyle"
                         [extra]="extra"
             >
                 <ng-template #extra>
-                <span>this is extra</span>
+                <span>店铺地址: {{market.marketAddress}}</span>
                 </ng-template>
             </CardHeader>
             <CardBody>
-                <div>This is content of Card</div>
+                <div>店铺详情: {{market.marketDetail}}</div>
+                <div style="overflow:scroll;white-space:nowrap;">
+                    <img *ngFor="let item of market.marketLocationPics" [src]="item.imageUrl" class="market-photo" />
+                </div>
             </CardBody>
-            <CardFooter [content]="'footer content'" [extra]="footerExtra">
+            <CardFooter [content]="''" [extra]="footerExtra">
                 <ng-template #footerExtra>
-                <div>extra footer content</div>
+                <div>联系电话: {{market.marketPhone}}</div>
                 </ng-template>
             </CardFooter>
         </Card>
     </List>
     <List renderHeader="产品列表">
-        <ListItem 
+        <ListItem
+            *ngFor="let item of market.products"
             [arrow]="'horizontal'"
-            [thumb]="'/assets/images/shop.svg'"
+            [thumb]="item.productPics[0].imageUrl"
             multipleLine
-            (onClick)="clickMarket(market)">产品
-            <Brief>产品描述</Brief>
-        </ListItem>
-        <ListItem 
-            [arrow]="'horizontal'"
-            [thumb]="'/assets/images/shop.svg'"
-            multipleLine
-            (onClick)="clickMarket(market)">产品
-            <Brief>产品描述</Brief>
+            (onClick)="clickProduct(market)">{{item.productName}} —— ¥{{item.productPrice}}
+            <Brief>{{item.category.categoryName}} : {{item.productDetail}}</Brief>
         </ListItem>
     </List>      
 </div>
 <div *ngIf="orderStatus">
     <Menu 
         class="multi-foo-menu"
-        [data]="initData"
-        [value]="['1', ['3', '4']]"
+        [data]="simpleMenu"
         [multiSelect]="true"
-        (onChange)="onChange($event)"
+        [level]="1"
         (onOk)="onOk($event)"
         (onCancel)="onCancel()"
         [height]="menuHeight">
     </Menu>
-    <div *ngIf="show && !initData" style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center">
+    <!-- <div style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center">
         <ActivityIndicator [size]="'large'"></ActivityIndicator>
-    </div>
-    <div *ngIf="show" class="menu-mask3" (click)="onMaskClick()"></div>
+    </div> -->
+    <div class="menu-mask3" (click)="onMaskClick()"></div>
 </div>

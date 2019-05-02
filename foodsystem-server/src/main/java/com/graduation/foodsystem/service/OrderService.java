@@ -24,4 +24,6 @@ public interface OrderService {
     BackJson getAllOpenOrderByUser(int userId);
 
     BackJson getAllClosedOrderByUser(int userId);
+
+    BackJson getOrderById(int orderId);
 }

@@ -56,4 +56,6 @@ public interface OrderProductRefMapper {
 
     //通过orderId获得所有的product
     List<OrderProductRef> selectByOrderId(Integer orderId);
+
+    List<OrderProductRef> simpleSelectByOrderId(Integer orderId);
 }

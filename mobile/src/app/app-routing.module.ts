@@ -13,6 +13,7 @@ import { ChangepassComponent } from './changepass/changepass.component';
 import { EvaluatesComponent } from './evaluates/evaluates.component';
 import { MarketdetailComponent } from './marketdetail/marketdetail.component';
 import { HistoryorderComponent } from './historyorder/historyorder.component';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 
 const routes: Routes = [{
   path:'', component:AppComponent,
@@ -36,7 +37,8 @@ const routes: Routes = [{
     { path:'userdetail',component: UserdetailComponent},
     { path:'changepass',component: ChangepassComponent},
     { path:'myorders',component: OrdersComponent},
-    { path:'myevaluates',component: EvaluatesComponent}
+    { path:'myevaluates',component: EvaluatesComponent},
+    { path:'orderdetail',component: OrderdetailComponent}
   ] 
 }];
 

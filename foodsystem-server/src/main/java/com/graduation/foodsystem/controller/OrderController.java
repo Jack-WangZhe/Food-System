@@ -45,6 +45,15 @@ public class OrderController {
     }
 
     /**
+     * 获得指定订单的所有内容
+     * @return
+     */
+    @GetMapping
+    public BackJson getOrderById(@RequestParam("orderId")int orderId) {
+        return orderService.getOrderById(orderId);
+    }
+
+    /**
      * 获得店铺中所有的订单
      * @param marketId 指定店铺
      * @return

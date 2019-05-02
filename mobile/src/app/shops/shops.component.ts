@@ -22,6 +22,8 @@ export class ShopsComponent implements OnInit {
     this.httpClient.get('/market/all').subscribe((res:any)=>{
       if(res.status) {
         this.markets = res.value;
+        console.log('======2======')
+        console.log(this.markets);
       }else {
         const toast = Toast.fail('暂时没有商家入驻...',1000);
       }

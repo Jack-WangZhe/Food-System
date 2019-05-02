@@ -13,5 +13,14 @@
     },
     "/market": {
         "target":"http://localhost:1234"
+    },
+    "/market/all": {
+        "target":"http://localhost:1234"
+    },
+    "/order": {
+        "target":"http://localhost:1234"
+    },
+    "/evaluate": {
+        "target":"http://localhost:1234"
     }
 }

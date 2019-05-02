@@ -20,6 +20,7 @@ import { UserdetailComponent } from './userdetail/userdetail.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { EvaluatesComponent } from './evaluates/evaluates.component';
 import { HistoryorderComponent } from './historyorder/historyorder.component';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HistoryorderComponent } from './historyorder/historyorder.component';
     UserdetailComponent,
     ChangepassComponent,
     EvaluatesComponent,
-    HistoryorderComponent
+    HistoryorderComponent,
+    OrderdetailComponent
   ],
   imports: [
     BrowserModule,

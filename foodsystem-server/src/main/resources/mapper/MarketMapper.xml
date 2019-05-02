@@ -16,7 +16,7 @@
     <collection property="marketLocationPics" column="{imageFrom=NameMarket,imageType=NameLocation,objectId=market_id}" ofType="map" javaType="java.util.List" select="com.graduation.foodsystem.mapper.ImageMapper.selectByImageInfo"></collection>
     <collection property="marketInfoPics" column="{imageFrom=NameMarket,imageType=NameInfo,objectId=market_id}" ofType="map" javaType="java.util.List" select="com.graduation.foodsystem.mapper.ImageMapper.selectByImageInfo"></collection>
     <collection property="products" column="market_id" javaType="java.util.List" select="com.graduation.foodsystem.mapper.ProductMapper.selectByMarketId"></collection>
-    <collection property="orders" column="market_id" javaType="java.util.List" select="com.graduation.foodsystem.mapper.OrderMapper.selectByMarketId"></collection>
+    <collection property="orders" column="market_id" javaType="java.util.List" select="com.graduation.foodsystem.mapper.OrderMapper.simpleSelectByMarketId"></collection>
   </resultMap>
   <sql id="Base_Column_List">
     <!--

@@ -29,3 +29,8 @@ CREATE TABLE `order_product_ref` (
 ```sql
 ALTER TABLE `foodsystem`.`image` CHANGE COLUMN `image_url` `image_url` varchar(400) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL;
 ```
+
+添加category
+```sql
+insert into category values (1,'东北菜',0),(2,'粤菜',0),(3,'西北菜',0),(4,'江浙菜',0),(5,'异国料理',0)
+```

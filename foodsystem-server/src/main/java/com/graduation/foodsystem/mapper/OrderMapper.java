@@ -55,6 +55,8 @@ public interface OrderMapper {
 
     List<Order> selectByMarketId(Integer marketId);
 
+    List<Order> simpleSelectByMarketId(Integer marketId);
+
     int deleteByOrderId(Integer orderId);
 
     List<Order> selectByMarketIdStatusIsOpen(Integer marketId);

@@ -1,2 +1,20 @@
 <Navbar [leftContent]="'回退'"
         (onLeftClick)="back()">我的订单</Navbar>
+<List renderHeader="未完成订单">
+    <ListItem *ngFor="let order of pendingOrders"
+        [arrow]="'horizontal'"
+        [thumb]="'/assets/images/order.svg'"
+        multipleLine
+        (onClick)="clickOrder(order)">下单日期: {{order.orderdate | date:'yyyy-MM-dd'}}
+        <Brief>订单状态:{{order.orderstatus===0?'未完成':'已完成'}}  订单价格:￥{{order.orderprice}}</Brief>
+    </ListItem>
+</List>
+<List renderHeader="已完成订单">
+    <ListItem *ngFor="let order of completeOrders"
+        [arrow]="'horizontal'"
+        [thumb]="'/assets/images/order.svg'"
+        multipleLine
+        (onClick)="clickOrder(order)">下单日期: {{order.orderdate | date:'yyyy-MM-dd'}}
+        <Brief>订单状态:{{order.orderstatus===0?'未完成':'已完成'}}  订单价格:￥{{order.orderprice}}</Brief>
+    </ListItem>
+</List>

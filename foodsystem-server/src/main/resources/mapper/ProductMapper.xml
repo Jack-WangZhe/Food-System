@@ -31,7 +31,7 @@
     -->
     select 
     <include refid="Base_Column_List" />,
-    'product' as NameProduct,
+    'production' as NameProduct,
     'info' as NameInfo
     from product
     where product_id = #{productId,jdbcType=INTEGER} and isdelete=0
@@ -155,7 +155,7 @@
   <select id="selectByMarketId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />,
-    'product' as NameProduct,
+    'production' as NameProduct,
     'info' as NameInfo
     from product
     where market_id = #{marketId,jdbcType=INTEGER} and isdelete=0

@@ -1,24 +1,72 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Toast } from 'ng-zorro-antd-mobile';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-marketdetail',
   templateUrl: './marketdetail.component.html',
-  styleUrls: ['./marketdetail.component.scss']
+  styleUrls: ['./marketdetail.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MarketdetailComponent implements OnInit {
 
   orderStatus:boolean = false;
+  user = JSON.parse(localStorage.getItem('user'));
+  
+  //店铺信息
+  market:any;
+  //多级菜单列表
+  menu:Array<any> = [];
+  //单级菜单列表
+  simpleMenu:Array<any> = [];
 
   constructor(
+    private activedRoute: ActivatedRoute,
     private router: Router,
     private httpClient: HttpClient,
     private toast: Toast
   ) { }
 
   ngOnInit() {
+    this.activedRoute.queryParams.subscribe((res:any)=>{
+      this.market = JSON.parse(res.market);
+      // let allCategory:Array<string> = this.market.products.map((product:any)=>{
+      //   return product.category.categoryName
+      // });
+      // allCategory = Array.from(new Set(allCategory));
+      // let index = 1;
+      // for(let category of allCategory) {
+      //   let model = {
+      //     value: `${index}`,
+      //     label: category,
+      //     children: []
+      //   };
+      //   this.menu.push(model);
+      //   index++;
+      // }
+      // this.market.products.forEach((product:any)=>{
+      //   this.menu.forEach((item:any)=>{
+      //     if(item.label === product.category.categoryName){
+      //       let model = {
+      //         label: product.productName,
+      //         value: item.children.length+1+''
+      //       };
+      //       item.children.push(model);
+      //     }
+      //   });
+      // });
+
+      this.simpleMenu = this.market.products.map((product:any,index)=>{
+        return {
+          'value':{
+            'productId': product.productId,
+            'productPrice': product.productPrice
+          },
+          'label':product.productName
+        }
+      });
+    });
   }
 
   //回退
@@ -31,109 +79,48 @@ export class MarketdetailComponent implements OnInit {
     this.orderStatus = true;
   }
 
-  //模拟点餐
-  show: boolean = true;
+  //点餐
   menuHeight: number = document.documentElement.clientHeight * 0.6;
-  dataMenu: Array<any> = [
-    {
-      value: '1',
-      label: 'Food',
-      children: [
-        {
-          label: 'All Foods',
-          value: '1',
-          disabled: false
-        },
-        {
-          label: 'Chinese Food',
-          value: '2'
-        },
-        {
-          label: 'Hot Pot',
-          value: '3'
-        },
-        {
-          label: 'Buffet',
-          value: '4'
-        },
-        {
-          label: 'Fast Food',
-          value: '5'
-        },
-        {
-          label: 'Snack',
-          value: '6'
-        },
-        {
-          label: 'Bread',
-          value: '7'
-        },
-        {
-          label: 'Fruit',
-          value: '8'
-        },
-        {
-          label: 'Noodle',
-          value: '9'
-        },
-        {
-          label: 'Leisure Food',
-          value: '10'
-        }
-      ]
-    },
-    {
-      value: '2',
-      label: 'Supermarket',
-      children: [
-        {
-          label: 'All Supermarkets',
-          value: '1'
-        },
-        {
-          label: 'Supermarket',
-          value: '2',
-          disabled: true
-        },
-        {
-          label: 'C-Store',
-          value: '3'
-        },
-        {
-          label: 'Personal Care',
-          value: '4'
-        }
-      ]
-    },
-    {
-      value: '3',
-      label: 'Extra',
-      isLeaf: true,
-      children: [
-        {
-          label: 'you can not see',
-          value: '1'
-        }
-      ]
-    }
-  ];
-
-  initData: Array<any> = this.dataMenu;
-
-  onChange(value) {
-    console.log(value);
-  }
 
   onMaskClick() {
-    this.show = false;
+    this.orderStatus = false;
   }
 
-  onOk(value) {
-    console.log(value);
-    this.onCancel();
+  onOk(value:any) {
+    let price = 0;
+    value.forEach((val:any)=>{
+      price += val.productPrice;
+    });
+    let result = confirm(`此笔订单一共需要到付${price}元,请确认!`);
+    if(result) {
+      const toast = Toast.loading('加载中......',0);
+      let productList = value.map((val:any)=>{
+        return {"productId":val.productId};
+      })
+      let model = {
+        "isdelete": 0,
+        "marketId": this.market.marketId,
+        "orderdate": new Date(),
+        "orderprice": price,
+        "orderstatus": 0,
+        "userId": this.user.userId,
+        "productList": productList
+      }
+      this.httpClient.post('/order',model).subscribe((res:any)=>{
+        Toast.hide();
+        if(res.status){
+          const toast = Toast.success('恭喜您,下单成功!');
+          this.onCancel();
+        }else{
+          const toast = Toast.fail('下单失败,请继续采购!');
+        }
+      });
+    }else {
+      const toast = Toast.fail('下单失败,请继续采购!');
+    }
   }
 
   onCancel() {
-    this.show = false;
+    this.orderStatus = false;
   }
 }
