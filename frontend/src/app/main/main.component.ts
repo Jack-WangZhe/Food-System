@@ -30,18 +30,123 @@ export class MainComponent implements OnInit {
   //切换导航标识
   navClose: boolean = false;
 
-
-
+  //不同身份不同menu
+  //店铺menu
+  shopMenuData = [
+    {
+      "id": "1",
+      "parentId": "0",
+      "name": "店铺管理",
+      "keyWord": "店铺管理",
+      "icon": 'fa-wrench',
+      "url": '/app/demo/toastDemo'
+    },
+    {
+      "id": "2",
+      "parentId": "0",
+      "name": "菜品管理",
+      "keyWord": "菜品管理",
+      "icon": 'fa-wrench',
+      "isExpend": false,
+      "children": [{
+        "id": "3",
+        "parentId": "2",
+        "name": "添加菜品",
+        "keyWord": "添加菜品",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      },{
+        "id": "4",
+        "parentId": "2",
+        "name": "菜品列表",
+        "keyWord": "菜品列表",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      }]
+    },
+    {
+      "id": "5",
+      "parentId": "0",
+      "name": "订单管理",
+      "keyWord": "订单管理",
+      "icon": 'fa-wrench',
+      "url": '/app/demo/toastDemo'
+    }
+  ]
+  systemMenuData = [
+    {
+      "id": "1",
+      "parentId": "0",
+      "name": "用户管理",
+      "keyWord": "用户管理",
+      "icon": 'fa-wrench',
+      "isExpend": false,
+      "children": [{
+        "id": "2",
+        "parentId": "1",
+        "name": "添加用户",
+        "keyWord": "添加用户",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      },{
+        "id": "3",
+        "parentId": "1",
+        "name": "用户列表",
+        "keyWord": "用户列表",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      }]
+    },
+    {
+      "id": "4",
+      "parentId": "0",
+      "name": "店铺管理",
+      "keyWord": "店铺管理",
+      "icon": 'fa-wrench',
+      "isExpend": false,
+      "children": [{
+        "id": "5",
+        "parentId": "4",
+        "name": "添加店铺",
+        "keyWord": "添加店铺",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      },{
+        "id": "6",
+        "parentId": "4",
+        "name": "店铺列表",
+        "keyWord": "店铺列表",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      }]
+    },
+    {
+      "id": "7",
+      "parentId": "0",
+      "name": "菜系管理",
+      "keyWord": "菜系管理",
+      "icon": 'fa-wrench',
+      "isExpend": false,
+      "children": [{
+        "id": "8",
+        "parentId": "7",
+        "name": "添加菜系",
+        "keyWord": "添加菜系",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      },{
+        "id": "9",
+        "parentId": "7",
+        "name": "菜系列表",
+        "keyWord": "菜系列表",
+        "icon": 'fa-columns',
+        "url": '/app/demo/toastDemo'
+      }]
+    }
+  ]
 
   //用户数据
-  mainData: MainData = {
-    userData: {
-      userName: "百变小咖",
-      userAvatar: "./assets/img/user-header.png",
-      mobilePhone: "1895090***2",
-      email: "332557712@qq.com",
-      positions: "Java工程师、打杂工程师",
-    },
+  mainData = {
     menuData: [{
       "id": "1",
       "parentId": "0",
