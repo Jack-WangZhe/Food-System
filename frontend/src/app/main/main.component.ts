@@ -21,6 +21,9 @@ import { AppService } from '../app.service';
 })
 export class MainComponent implements OnInit {
 
+  //用户信息
+  user = JSON.parse(localStorage.getItem('user'));
+
   //切换导航
   toggleDescTip: string = "点击关闭导航菜单";
 

@@ -17,7 +17,7 @@ import { ToastConfig, ToastType } from '../../../shared/toast/toast-model';
 export class AvatarCropperComponent {
 
     //用户头像
-    userAvatar: string = "./assets/img/user-header.png";
+    userAvatar: string = "./assets/img/avator.png";
 
     //头像
     avatar: any;

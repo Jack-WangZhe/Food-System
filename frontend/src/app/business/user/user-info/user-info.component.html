@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">帐号：</label>
+                <label class="col-md-2 col-form-label text-right">账号：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">332557712</p>
+                    <p class="form-control-plaintext">{{user.userId}}</p>
                 </div>
             </div>
         </div>
@@ -27,15 +27,15 @@
             <div class="form-group row">
                 <label class="col-md-2 col-form-label text-right">姓名：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">小咖</p>
+                    <p class="form-control-plaintext">{{user.userName}}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">邮箱：</label>
+                <label class="col-md-2 col-form-label text-right">权限：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">email@example.com</p>
+                    <p class="form-control-plaintext">{{user.role===0?'商家':'管理员'}}</p>
                 </div>
             </div>
         </div>
@@ -49,9 +49,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">身份证：</label>
+                <label class="col-md-2 col-form-label text-right">手机：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">350*81199103155**</p>
+                    <p class="form-control-plaintext">{{user.userPhone}}</p>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="form-group row">
                 <label class="col-md-2 col-form-label text-right">性别：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">男</p>
+                    <p class="form-control-plaintext">{{user.userSex===0?'女':'男'}}</p>
                 </div>
             </div>
         </div>
@@ -67,35 +67,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">出生年月：</label>
+                <label class="col-md-2 col-form-label text-right">地址：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">1866-12-1</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">籍贯：</label>
-                <div class="col-md-10">
-                    <p class="form-control-plaintext">福建</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">住址：</label>
-                <div class="col-md-10">
-                    <p class="form-control-plaintext">福建省某某市某区某街道1#202室</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-md-2 col-form-label text-right">联系电话：</label>
-                <div class="col-md-10">
-                    <p class="form-control-plaintext">1895090****</p>
+                    <p class="form-control-plaintext">{{user.userAddress}}</p>
                 </div>
             </div>
         </div>

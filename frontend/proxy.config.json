@@ -4,5 +4,8 @@
     },
     "/user/register": {
         "target":"http://localhost:1234"
+    },
+    "/user/info" : {
+        "target":"http://localhost:1234"
     }
 }
