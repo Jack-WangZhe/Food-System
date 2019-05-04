@@ -92,7 +92,7 @@ public class ProductServiceImpl implements ProductService {
             backJson.setStatus(true);
             backJson.setValue("商品删除成功!");
         }
-        return null;
+        return backJson;
     }
 
     /**

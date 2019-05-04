@@ -1,0 +1,22 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">菜系信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">菜系名称：</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" [(ngModel)]="categoryName" placeholder="请输入菜系名...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-10 col-2">
+            <button style="width: 100%;background: #1185d0;color: white;" class="btn c-not-shadow" (click)="register();">添加菜系</button>
+        </div>
+    </div>
+</div>

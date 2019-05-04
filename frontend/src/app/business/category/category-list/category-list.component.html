@@ -1,0 +1,31 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">系统所有菜系</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center c-w-2">编号</th>
+                        <th class="text-center c-w-4">菜系名</th>
+                        <th class="text-center c-w-2">状态</th>
+                        <th class="text-center c-w-4">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categoryList;let i = index">
+                        <td class="text-center">{{category.categoryId}}</td>
+                        <td class="text-center">{{category.categoryName}}</td>
+                        <td class="text-center">{{category.isdelete===0?'存在':'已删除'}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm" (click)="deleteCategory(category,index)"><i class="fa fa-trash-o fa-fw"></i> 删除菜系</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">帐号信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">账号：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userId}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">密码：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">***********</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">姓名：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userName}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">权限：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.role===0?'商家':'管理员'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row c-mt15">
+        <div class="col-md-12">
+            <p class="c-line-title">个人信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">手机：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userPhone}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">性别：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userSex===0?'女':'男'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">地址：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userAddress}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

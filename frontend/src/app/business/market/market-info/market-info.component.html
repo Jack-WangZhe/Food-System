@@ -1,0 +1,87 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">店铺信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">编号：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.marketId}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">店名：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.marketName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">地址：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.marketAddress}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">电话：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.marketPhone}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row c-mt15">
+        <div class="col-md-12">
+            <p class="c-line-title">详情信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">详情：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.marketDetail}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">状态</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{market.isdelete===0?'正常营业':'已关闭'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">营业执照：</label>
+                <div class="col-md-10">
+                    <img *ngFor="let img of market.marketInfoPics" [src]="img.imageUrl" [hidden]="img.isdelete" style="width:150px;height:150px;border:1px solid black;margin:5px;display:inline;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">门店照片：</label>
+                <div class="col-md-10">
+                    <img *ngFor="let img of market.marketLocationPics" [src]="img.imageUrl" [hidden]="img.isdelete" style="width:150px;height:150px;border:1px solid black;margin:5px;display:inline;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

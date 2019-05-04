@@ -17,9 +17,10 @@ const mainRoutes: Routes = [
       { path: 'menu', loadChildren: 'app/business/menu/menu.module#MenuModule' },
       { path: 'sysLog', loadChildren: 'app/business/sys-log/sys-log.module#SysLogModule' },
       { path: 'sysMonitor', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
-      { path: 'marketmanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
+      { path: 'market', loadChildren: 'app/business/market/market.module#MarketModule' },
       { path: 'category', loadChildren: 'app/business/category/category.module#CategoryModule' },
-      { path: 'ordermanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' }
+      { path: 'product', loadChildren: 'app/business/product/product.module#ProductModule' },
+      { path: 'order', loadChildren: 'app/business/order/order.module#OrderModule' }
     ]
   }
 ];

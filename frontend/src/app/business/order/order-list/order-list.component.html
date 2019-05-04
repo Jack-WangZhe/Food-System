@@ -1,0 +1,38 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">店铺订单</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center c-w-1">编号</th>
+                        <th class="text-center c-w-2">下单人</th>
+                        <th class="text-center c-w-2">下单时间</th>
+                        <th class="text-center c-w-2">订单价格</th>
+                        <th class="text-center c-w-2">订单状态</th>
+                        <th class="text-center c-w-1">基本状态</th>
+                        <th class="text-center c-w-2">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orderList;let i = index">
+                        <td class="text-center">{{order.orderId}}</td>
+                        <td class="text-center">{{order.user.userName}}</td>
+                        <td class="text-center">{{order.orderdate | date:'yyyy-MM-dd'}}</td>
+                        <td class="text-center">{{order.orderprice}}</td>
+                        <td class="text-center">{{order.orderstatus===0?'进行中':'已完成'}}</td>
+                        <td class="text-center">{{order.isdelete===0?'生效':'已删除'}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" (click)="editOrder(order,index)"><i class="fa fa-search fa-fw"></i> 查看</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteOrder(order,index)"><i class="fa fa-trash-o fa-fw"></i> 删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

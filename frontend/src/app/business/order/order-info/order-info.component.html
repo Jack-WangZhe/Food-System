@@ -1,0 +1,97 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title" (click)="back()">[ 退回上一页 ]</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">订单信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">订单编号：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.orderId}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">下单人：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.user.userName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">下单时间：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.orderdate | date:'yyyy-MM-dd'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">订单价格：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.orderprice}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">订单状态：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.orderStatus===0?'进行中':'已完成'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">基本状态：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{order.isdelete===0?'生效':'已删除'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row c-mt15">
+        <div class="col-md-12">
+            <p class="c-line-title">订单菜品</p>
+        </div>
+    </div>
+    <div *ngFor="let product of order['productList']" class="row">
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <p class="form-control-plaintext">菜品名称: {{product.product.productName}}</p>
+                </div>
+                <div class="col-md-8">
+                    <p class="form-control-plaintext">菜品单价: ${{product.product.productPrice}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row c-mt15">
+        <div class="col-md-12">
+            <p class="c-line-title">评价信息：</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <p class="form-control-plaintext">{{order.evaluate?order.evaluate.evaluateDetail:'未评价'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

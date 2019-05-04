@@ -146,7 +146,7 @@ public class MarketServiceImpl implements MarketService {
             backJson.setStatus(true);
             backJson.setValue(market);
         }
-        return null;
+        return backJson;
     }
 
     /**

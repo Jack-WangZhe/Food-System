@@ -1,0 +1,38 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">系统所有店铺</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center c-w-1">编号</th>
+                        <th class="text-center c-w-1">店名</th>
+                        <th class="text-center c-w-2">地址</th>
+                        <th class="text-center c-w-3">详情</th>
+                        <th class="text-center c-w-2">电话</th>
+                        <th class="text-center c-w-1">状态</th>
+                        <th class="text-center c-w-2">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let market of marketList;let i = index">
+                        <td class="text-center">{{market.marketId}}</td>
+                        <td class="text-center">{{market.marketName}}</td>
+                        <td class="text-center">{{market.marketAddress}}</td>
+                        <td class="text-center">{{market.marketDetail}}</td>
+                        <td class="text-center">{{market.marketPhone}}</td>
+                        <td class="text-center">{{market.isdelete===0?'正常营业':'已关闭'}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-success btn-sm" (click)="editMarket(market,index)"><i class="fa fa-pencil fa-fw"></i> 编辑</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteMarket(market,index)"><i class="fa fa-trash-o fa-fw"></i> 关闭</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

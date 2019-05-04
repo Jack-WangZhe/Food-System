@@ -1,0 +1,38 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">店铺所有菜品</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center c-w-1">编号</th>
+                        <th class="text-center c-w-1">品名</th>
+                        <th class="text-center c-w-1">介绍</th>
+                        <th class="text-center c-w-2">价格</th>
+                        <th class="text-center c-w-2">类别</th>
+                        <th class="text-center c-w-1">状态</th>
+                        <th class="text-center c-w-2">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productList;let i = index">
+                        <td class="text-center">P-{{product.productId}}</td>
+                        <td class="text-center">{{product.productName}}</td>
+                        <td class="text-center">{{product.productDetail}}</td>
+                        <td class="text-center">{{product.productPrice}}</td>
+                        <td class="text-center">{{product.category.categoryName}}</td>
+                        <td class="text-center">{{user.isdelete===0?'存在':'已删除'}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-success btn-sm" (click)="editProduct(product,index)"><i class="fa fa-pencil fa-fw"></i> 编辑</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteProduct(product,index)"><i class="fa fa-trash-o fa-fw"></i> 删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

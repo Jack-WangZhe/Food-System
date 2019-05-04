@@ -36,38 +36,54 @@ export class MainComponent implements OnInit {
       "name": "店铺管理",
       "keyWord": "店铺管理",
       "icon": 'fa-cogs',
-      "url": '/app/demo/toastDemo'
+      "isExpend": false,
+      "children": [{
+        "id": "2",
+        "parentId": "1",
+        "name": "店铺详情",
+        "keyWord": "店铺详情",
+        "icon": 'fa-cubes',
+        "url": '/app/market/marketInfo'
+      }]
     },
     {
-      "id": "2",
+      "id": "3",
       "parentId": "0",
       "name": "菜品管理",
       "keyWord": "菜品管理",
       "icon": 'fa-wrench',
       "isExpend": false,
       "children": [{
-        "id": "3",
+        "id": "4",
         "parentId": "2",
         "name": "添加菜品",
         "keyWord": "添加菜品",
         "icon": 'fa-pencil-square-o',
-        "url": '/app/demo/toastDemo'
+        "url": '/app/product/productAdd'
       },{
-        "id": "4",
+        "id": "5",
         "parentId": "2",
         "name": "菜品列表",
         "keyWord": "菜品列表",
         "icon": 'fa-list-alt',
-        "url": '/app/demo/toastDemo'
+        "url": '/app/product/productList'
       }]
     },
     {
-      "id": "5",
+      "id": "6",
       "parentId": "0",
       "name": "订单管理",
       "keyWord": "订单管理",
       "icon": 'fa-cube',
-      "url": '/app/demo/toastDemo'
+      "isExpend": false,
+      "children": [{
+        "id": "7",
+        "parentId": "1",
+        "name": "订单列表",
+        "keyWord": "订单列表",
+        "icon": 'fa-cubes',
+        "url": '/app/order/orderList'
+      }]
     }
   ]
   systemMenuData = [
@@ -107,7 +123,7 @@ export class MainComponent implements OnInit {
         "name": "店铺列表",
         "keyWord": "店铺列表",
         "icon": 'fa-list-alt',
-        "url": '/app/demo/toastDemo'
+        "url": '/app/market/marketList'
       }]
     },
     {

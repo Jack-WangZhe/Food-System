@@ -1,0 +1,63 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">菜品信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">品名：</label>
+                <div class="col-md-10">
+                    <input type="text" name="productName" class="form-control" [(ngModel)]="productName" placeholder="请输入菜品名...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">详情：</label>
+                <div class="col-md-10">
+                    <input type="text" name="productDetail" class="form-control" [(ngModel)]="productDetail" placeholder="请输入菜品详情...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">价格：</label>
+                <div class="col-md-10">
+                    <input type="text" name="productPrice" class="form-control" [(ngModel)]="productPrice" placeholder="请输入菜品价格...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">类别：</label>
+                <div class="col-md-10">
+                    <select class="form-control" [(ngModel)]="categoryId">
+                        <option *ngFor="let category of categoryList" [value]="category.categoryId">{{category.categoryName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">图片：</label>
+                <div class="col-md-6">
+                    <input type="file" name="userAddress" class="form-control" accept='image/*' ng2FileSelect [uploader]="uploader">
+                </div>
+                <div class="col-md-4">
+                    <img *ngIf="productPicUrl" src="http://localhost:9999/{{productPicUrl}}" style="width:100px;height:100px;border:1px solid black;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-10 col-2">
+            <button style="width: 100%;background: #1185d0;color: white;" class="btn c-not-shadow" (click)="register();">添加菜品</button>
+        </div>
+    </div>
+</div>

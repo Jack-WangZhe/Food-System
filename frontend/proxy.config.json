@@ -10,5 +10,20 @@
     },
     "/user/alllist" : {
         "target":"http://localhost:1234"
+    },
+    "/category" : {
+        "target":"http://localhost:1234"
+    },
+    "/market" : {
+        "target":"http://localhost:1234"
+    },
+    "/product" : {
+        "target":"http://localhost:1234"
+    },
+    "/image" : {
+        "target":"http://localhost:1234"
+    },
+    "/order" : {
+        "target":"http://localhost:1234"
     }
 }
