@@ -16,7 +16,10 @@ const mainRoutes: Routes = [
       { path: 'role', loadChildren: 'app/business/role/role.module#RoleModule' },
       { path: 'menu', loadChildren: 'app/business/menu/menu.module#MenuModule' },
       { path: 'sysLog', loadChildren: 'app/business/sys-log/sys-log.module#SysLogModule' },
-      { path: 'sysMonitor', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' }
+      { path: 'sysMonitor', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
+      { path: 'marketmanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
+      { path: 'categorymanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
+      { path: 'ordermanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' }
     ]
   }
 ];

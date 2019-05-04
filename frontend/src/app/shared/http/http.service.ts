@@ -63,10 +63,10 @@ export class HttpService {
         }), success, error);
     }
 
-    public delete(url: string, paramMap: any = null, success: Function=function(successful, data, res){}, error: Function=function(successful, msg, err){}): any {
+    public delete(url: string, body: any = null, success: Function=function(successful, data, res){}, error: Function=function(successful, msg, err){}): any {
         return this.request(url, new RequestOptions({
             method: RequestMethod.Delete,
-            search: HttpService.buildURLSearchParams(paramMap).toString()
+            body: body
         }), success, error);
     }
 

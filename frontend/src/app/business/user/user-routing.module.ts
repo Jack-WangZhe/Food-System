@@ -5,6 +5,7 @@ import { UserComponent } from './user.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserInfoComponent} from './user-info/user-info.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const userRoutes: Routes = [
     {
@@ -21,6 +22,10 @@ const userRoutes: Routes = [
             {
                 path:'userInfo',
                 component:UserInfoComponent
+            },
+            {
+                path:'userEdit',
+                component:UserEditComponent
             }
         ]
     }

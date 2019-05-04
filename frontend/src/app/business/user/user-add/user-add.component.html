@@ -4,42 +4,65 @@
             <p class="c-line-title">用户信息</p>
         </div>
     </div>
-    <form>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label text-right">帐号：</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="请输入帐号...">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label text-right">密码：</label>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control" placeholder="请输入密码...">
-                    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">用户名：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userName" class="form-control" [(ngModel)]="userName" placeholder="请输入用户名...">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label text-right">姓名：</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="请输入姓名...">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label text-right">邮箱：</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="请输入邮箱...">
-                    </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">密码：</label>
+                <div class="col-md-10">
+                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="请输入密码...">
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">权限：</label>
+                <div class="col-md-10">
+                    <input type="radio" name="role" value="0" [checked]="role===0" (change)="changeRole($event)">用户
+                    <input type="radio" name="role" value="1" [checked]="role===1" (change)="changeRole($event)">管理员   
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">手机：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userPhone" class="form-control" [(ngModel)]="userPhone" placeholder="请输入手机号...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">性别：</label>
+                <div class="col-md-10">
+                    <input type="radio" name="userSex" value="0" [checked]="userSex===0" (change)="changeSex($event)">女
+                    <input type="radio" name="userSex" value="1" [checked]="userSex===1" (change)="changeSex($event)">男   
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">地址：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userAddress" class="form-control" [(ngModel)]="userAddress" placeholder="请输入地址...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-10 col-2">
+            <button style="width: 100%;background: #1185d0;color: white;" class="btn c-not-shadow" (click)="register();">注册用户</button>
+        </div>
+    </div>
 </div>

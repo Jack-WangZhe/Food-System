@@ -1,9 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
-import { MainData } from '../main/main-model';
 import { ModalService } from '../shared/modal/modal.service';
 import { ConfirmConfig } from '../shared/modal/modal-model';
 
@@ -38,7 +35,7 @@ export class MainComponent implements OnInit {
       "parentId": "0",
       "name": "店铺管理",
       "keyWord": "店铺管理",
-      "icon": 'fa-wrench',
+      "icon": 'fa-cogs',
       "url": '/app/demo/toastDemo'
     },
     {
@@ -53,14 +50,14 @@ export class MainComponent implements OnInit {
         "parentId": "2",
         "name": "添加菜品",
         "keyWord": "添加菜品",
-        "icon": 'fa-columns',
+        "icon": 'fa-pencil-square-o',
         "url": '/app/demo/toastDemo'
       },{
         "id": "4",
         "parentId": "2",
         "name": "菜品列表",
         "keyWord": "菜品列表",
-        "icon": 'fa-columns',
+        "icon": 'fa-list-alt',
         "url": '/app/demo/toastDemo'
       }]
     },
@@ -69,7 +66,7 @@ export class MainComponent implements OnInit {
       "parentId": "0",
       "name": "订单管理",
       "keyWord": "订单管理",
-      "icon": 'fa-wrench',
+      "icon": 'fa-cube',
       "url": '/app/demo/toastDemo'
     }
   ]
@@ -79,22 +76,22 @@ export class MainComponent implements OnInit {
       "parentId": "0",
       "name": "用户管理",
       "keyWord": "用户管理",
-      "icon": 'fa-wrench',
+      "icon": 'fa-user',
       "isExpend": false,
       "children": [{
         "id": "2",
         "parentId": "1",
         "name": "添加用户",
         "keyWord": "添加用户",
-        "icon": 'fa-columns',
-        "url": '/app/demo/toastDemo'
+        "icon": 'fa-pencil-square-o',
+        "url": '/app/user/userAdd'
       },{
         "id": "3",
         "parentId": "1",
         "name": "用户列表",
         "keyWord": "用户列表",
-        "icon": 'fa-columns',
-        "url": '/app/demo/toastDemo'
+        "icon": 'fa-list-alt',
+        "url": '/app/user/userList'
       }]
     },
     {
@@ -102,44 +99,37 @@ export class MainComponent implements OnInit {
       "parentId": "0",
       "name": "店铺管理",
       "keyWord": "店铺管理",
-      "icon": 'fa-wrench',
+      "icon": 'fa-cogs',
       "isExpend": false,
       "children": [{
         "id": "5",
         "parentId": "4",
-        "name": "添加店铺",
-        "keyWord": "添加店铺",
-        "icon": 'fa-columns',
-        "url": '/app/demo/toastDemo'
-      },{
-        "id": "6",
-        "parentId": "4",
         "name": "店铺列表",
         "keyWord": "店铺列表",
-        "icon": 'fa-columns',
+        "icon": 'fa-list-alt',
         "url": '/app/demo/toastDemo'
       }]
     },
     {
-      "id": "7",
+      "id": "6",
       "parentId": "0",
       "name": "菜系管理",
       "keyWord": "菜系管理",
-      "icon": 'fa-wrench',
+      "icon": 'fa-cube',
       "isExpend": false,
       "children": [{
-        "id": "8",
+        "id": "7",
         "parentId": "7",
         "name": "添加菜系",
         "keyWord": "添加菜系",
-        "icon": 'fa-columns',
+        "icon": 'fa-pencil-square-o',
         "url": '/app/demo/toastDemo'
       },{
-        "id": "9",
+        "id": "8",
         "parentId": "7",
         "name": "菜系列表",
         "keyWord": "菜系列表",
-        "icon": 'fa-columns',
+        "icon": 'fa-list-alt',
         "url": '/app/demo/toastDemo'
       }]
     }

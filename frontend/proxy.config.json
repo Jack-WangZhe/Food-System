@@ -7,5 +7,8 @@
     },
     "/user/info" : {
         "target":"http://localhost:1234"
+    },
+    "/user/alllist" : {
+        "target":"http://localhost:1234"
     }
 }

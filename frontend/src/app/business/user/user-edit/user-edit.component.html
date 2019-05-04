@@ -1,0 +1,87 @@
+<div class="c-content-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title" (click)="back()">[ 退回上一页 ]</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="c-line-title">帐号信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">编号：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userId}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">密码：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.password}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">姓名：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userName" class="form-control" [(ngModel)]="user.userName" placeholder="请输入用户名...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">权限：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.role===0?'用户':'管理员'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row c-mt15">
+        <div class="col-md-12">
+            <p class="c-line-title">个人信息</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">手机：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userPhone" class="form-control" [(ngModel)]="user.userPhone" placeholder="请输入手机号...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">性别：</label>
+                <div class="col-md-10">
+                    <p class="form-control-plaintext">{{user.userSex===0?'女':'男'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label text-right">地址：</label>
+                <div class="col-md-10">
+                    <input type="text" name="userAddress" class="form-control" [(ngModel)]="user.userAddress" placeholder="请输入地址...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-10 col-2">
+            <button style="width: 100%;background: #1185d0;color: white;" class="btn c-not-shadow" (click)="edit();">编辑用户</button>
+        </div>
+    </div>
+</div>

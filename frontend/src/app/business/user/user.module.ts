@@ -8,6 +8,7 @@ import { UserComponent } from './user.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserInfoComponent} from './user-info/user-info.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @NgModule({
@@ -15,13 +16,15 @@ import { UserInfoComponent} from './user-info/user-info.component';
     CommonModule,
     FormsModule,
     UserRoutingModule,
-    PaginationModule
+    PaginationModule,
+    FormsModule
   ],
   declarations: [
     UserComponent,
     UserAddComponent,
     UserListComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    UserEditComponent
   ],
   exports: [
   ],

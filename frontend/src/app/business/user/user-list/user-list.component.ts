@@ -2,138 +2,58 @@ import { Component, OnInit,ViewChild} from '@angular/core';
 import { AppService } from '../../../app.service';
 
 import {HttpPaginationComponent} from '../../../shared/pagination/http-pagination.component';
+import { HttpService } from '../../../shared/http/http.service';
+import { ToastConfig, ToastType } from '../../../shared/toast/toast-model';
+import { ToastService } from '../../../shared/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'c-user-list',
   templateUrl: './user-list.component.html'
 })
-export class UserListComponent  {
+export class UserListComponent implements OnInit{
+  userList: Array<any> = [];
 
-  @ViewChild('hp', undefined) hp: HttpPaginationComponent;
-
-  url:string="";
-
-  param:any = {
-    name: 'admin',
-    age: 16
-  }
-
-  dataList:Array<any>=[
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    },
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    },
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    }
-    
-  ]
-
-  pageList:Array<number>= [15, 25, 35]
-
-   constructor(private appService: AppService) {
+  constructor(
+     private appService: AppService,
+     private toastService: ToastService, 
+     private httpService: HttpService,
+     private router: Router
+     ) {
     this.appService.titleEventEmitter.emit("用户列表");
   }
 
-  onDataChanged($event){
-    console.info($event)
+  ngOnInit(): void {
+    this.httpService.get("/user/alllist",null,(success,data,res)=>{
+      if (data.status) {
+        this.userList = data.value;
+      }else {
+        const toastCfg = new ToastConfig(ToastType.ERROR, '', data.value, 3000);
+        this.toastService.toast(toastCfg);
+      }
+    },(success,msg,error)=>{
+      const toastCfg = new ToastConfig(ToastType.ERROR, '', msg, 3000);
+      this.toastService.toast(toastCfg);
+    })
+  }
+
+  editUser(user, index) {
+    this.router.navigate(['/app/user/userEdit'],{queryParams:{ user: JSON.stringify(user)}});
+  }
+
+  deleteUser(user, index) {
+    this.httpService.delete("/user/info",user,(success,data,res)=>{
+      if (data.status) {
+        const toastCfg = new ToastConfig(ToastType.SUCCESS, '', '用户删除成功!', 3000);
+        this.toastService.toast(toastCfg);
+        this.ngOnInit();
+      }else {
+        const toastCfg = new ToastConfig(ToastType.ERROR, '', data.value, 3000);
+        this.toastService.toast(toastCfg);
+      }
+    },(success,msg,error)=>{
+      const toastCfg = new ToastConfig(ToastType.ERROR, '', msg, 3000);
+      this.toastService.toast(toastCfg);
+    })
   }
 }
