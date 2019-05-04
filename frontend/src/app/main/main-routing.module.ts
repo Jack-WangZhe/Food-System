@@ -18,7 +18,7 @@ const mainRoutes: Routes = [
       { path: 'sysLog', loadChildren: 'app/business/sys-log/sys-log.module#SysLogModule' },
       { path: 'sysMonitor', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
       { path: 'marketmanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
-      { path: 'categorymanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' },
+      { path: 'category', loadChildren: 'app/business/category/category.module#CategoryModule' },
       { path: 'ordermanager', loadChildren: 'app/business/sys-monitor/sys-monitor.module#SysMonitorModule' }
     ]
   }

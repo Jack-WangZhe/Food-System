@@ -123,14 +123,14 @@ export class MainComponent implements OnInit {
         "name": "添加菜系",
         "keyWord": "添加菜系",
         "icon": 'fa-pencil-square-o',
-        "url": '/app/demo/toastDemo'
+        "url": '/app/category/categoryAdd'
       },{
         "id": "8",
         "parentId": "7",
         "name": "菜系列表",
         "keyWord": "菜系列表",
         "icon": 'fa-list-alt',
-        "url": '/app/demo/toastDemo'
+        "url": '/app/category/categoryList'
       }]
     }
   ]
