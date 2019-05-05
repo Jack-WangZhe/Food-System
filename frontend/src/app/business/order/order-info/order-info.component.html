@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label class="col-md-2 col-form-label text-right">订单状态：</label>
                 <div class="col-md-10">
-                    <p class="form-control-plaintext">{{order.orderStatus===0?'进行中':'已完成'}}</p>
+                    <p class="form-control-plaintext">{{order.orderstatus===0?'进行中':'已完成'}}</p>
                 </div>
             </div>
         </div>
@@ -69,15 +69,20 @@
         </div>
     </div>
     <div *ngFor="let product of order['productList']" class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="product.product">
             <div class="form-group row">
                 <div class="col-md-4">
-                    <p class="form-control-plaintext">菜品名称: {{product.product.productName}}</p>
+                    <p class="form-control-plaintext" >菜品名称: {{product.product.productName}}</p>
                 </div>
                 <div class="col-md-8">
                     <p class="form-control-plaintext">菜品单价: ${{product.product.productPrice}}</p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="order.orderstatus===0">
+        <div class="offset-10 col-2">
+            <button style="width: 100%;background: #1185d0;color: white;" class="btn c-not-shadow" (click)="finish();">完成订单</button>
         </div>
     </div>
     <div class="row c-mt15">

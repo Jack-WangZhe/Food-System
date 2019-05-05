@@ -18,7 +18,7 @@ export class OrderdetailComponent implements OnInit {
   //订单的商铺
   market:any={};
   //评价信息
-  evaluteInfo = 'ss';
+  evaluteInfo = '';
   //用户信息
   user = JSON.parse(localStorage.getItem('user'));
 
@@ -49,11 +49,9 @@ export class OrderdetailComponent implements OnInit {
     this.activedRoute.queryParams.subscribe((param:any)=>{
       this.source = param.source;
       this.order = JSON.parse(param.order);
-      console.log(this.order);
       this.httpClient.get(`/market/${this.order.marketId}`).subscribe((res:any)=>{
         if(res.status){
           this.market = res.value;
-          console.log(this.market)
         }else{
           const toast = Toast.fail(res.value, 1000);
         }

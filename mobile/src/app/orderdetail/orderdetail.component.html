@@ -24,9 +24,12 @@
   <ListItem
     *ngFor="let item of order.productList"
     [arrow]="'horizontal'"
-    [thumb]="item.product.productPics[0].imageUrl"
-    multipleLine>{{item.product.productName}} —— ¥{{item.product.productPrice}}
-    <Brief>{{item.product.category.categoryName}} : {{item.product.productDetail}}</Brief>
+    [thumb]="item.product?item.product.productPics[0].imageUrl:''"
+    multipleLine>
+    <div *ngIf="item.product">
+      {{item.product.productName}} —— ¥{{item.product.productPrice}}
+      <Brief>{{item.product.category.categoryName}} : {{item.product.productDetail}}</Brief>
+    </div>
   </ListItem>
 </List>
 <List renderHeader="订单状态">
