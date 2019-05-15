@@ -1,6 +1,25 @@
 <Grid [activeStyle]="true" [columnNum]="3" [data]="data" (OnClick)="clickItem($event)"></Grid>
-<List renderHeader="加盟商家">
-  <ListItem *ngFor="let market of markets"
+<List renderHeader="推荐商家">
+  <ListItem *ngIf="!recommandMarkets.length">
+    <div>
+      系统暂未找到匹配您的推荐店铺...
+    </div>
+  </ListItem>
+  <ListItem *ngFor="let market of recommandMarkets"
+            [arrow]="'horizontal'"
+            [thumb]="'/assets/images/shop.svg'"
+            multipleLine
+            (onClick)="clickMarket(market)">{{market.marketName}}
+    <Brief>{{market.marketDetail}}</Brief>
+  </ListItem>
+</List>
+<List renderHeader="其他商家">
+  <ListItem *ngIf="!otherMarkets.length">
+    <div>
+      暂无其他商家加盟...
+    </div>
+  </ListItem>
+  <ListItem *ngFor="let market of otherMarkets"
             [arrow]="'horizontal'"
             [thumb]="'/assets/images/shop.svg'"
             multipleLine

@@ -10,7 +10,12 @@ import { Toast } from 'ng-zorro-antd-mobile';
 })
 export class ShopsComponent implements OnInit {
 
+  user:any = JSON.parse(localStorage.getItem('user'));
+  userAddress = this.user.userAddress;
+
   markets:Array<any> = [];
+  recommandMarkets = [];
+  otherMarkets = [];
 
   constructor(
     private router: Router,
@@ -22,8 +27,13 @@ export class ShopsComponent implements OnInit {
     this.httpClient.get('/market/all').subscribe((res:any)=>{
       if(res.status) {
         this.markets = res.value;
-        console.log('======2======')
-        console.log(this.markets);
+        this.markets.map((item:any,index,array)=>{
+          if(item.marketAddress.indexOf(this.userAddress)===-1) {
+            this.otherMarkets.push(item);
+          }else {
+            this.recommandMarkets.push(item);
+          }
+        })
       }else {
         const toast = Toast.fail('暂时没有商家入驻...',1000);
       }
