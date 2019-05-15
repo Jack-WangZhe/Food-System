@@ -54,6 +54,15 @@ public class MarketController {
     }
 
     /**
+     * 获得所有店铺信息
+     * @return
+     */
+    @GetMapping(value = "/all/likeaddress")
+    public BackJson getAllMarketLikeAddress(@RequestParam("userAddress") String userAddress) {
+        return marketService.getAllMarketLikeAddress(userAddress);
+    }
+
+    /**
      * 修改店铺信息
      * @param market
      * @return

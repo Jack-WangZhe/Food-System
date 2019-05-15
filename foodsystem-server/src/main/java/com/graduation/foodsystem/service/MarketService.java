@@ -18,4 +18,6 @@ public interface MarketService {
     BackJson changeMarketInfo(Market market);
 
     BackJson deleteMarketInfo(int marketId);
+
+    BackJson getAllMarketLikeAddress(String userAddress);
 }

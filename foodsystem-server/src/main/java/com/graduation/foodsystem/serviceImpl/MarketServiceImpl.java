@@ -167,4 +167,18 @@ public class MarketServiceImpl implements MarketService {
         }
         return backJson;
     }
+
+    @Override
+    public BackJson getAllMarketLikeAddress(String userAddress) {
+        BackJson backJson = new BackJson();
+        List<Market> markets = marketMapper.selectAllLikeAddress(userAddress);
+        if(markets == null){
+            backJson.setStatus(false);
+            backJson.setValue("查询失败,当前没有商家注册!");
+        }else {
+            backJson.setStatus(true);
+            backJson.setValue(markets);
+        }
+        return backJson;
+    }
 }
