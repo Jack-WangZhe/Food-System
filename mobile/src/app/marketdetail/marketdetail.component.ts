@@ -124,3 +124,8 @@ export class MarketdetailComponent implements OnInit {
     this.orderStatus = false;
   }
 }
+
+class productNumber {
+  productId:number;
+  productNumber:number;
+}

@@ -176,4 +176,14 @@
   <update id="updateMarketInfoToDelete" parameterType="java.lang.Integer">
     update market set isdelete = 0 where market_id = #{marketId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllLikeAddress" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />,
+    'market' as NameMarket,
+    'location' as NameLocation,
+    'info' as NameInfo
+    from market
+    where isdelete=0 and market_address like CONCAT('%',#{userAddress},'%')
+  </select>
 </mapper>

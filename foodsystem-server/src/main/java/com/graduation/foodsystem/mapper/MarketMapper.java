@@ -58,4 +58,6 @@ public interface MarketMapper {
     List<Market> selectAll();
 
     int updateMarketInfoToDelete(Integer marketId);
+
+    List<Market> selectAllLikeAddress(String userAddress);
 }
