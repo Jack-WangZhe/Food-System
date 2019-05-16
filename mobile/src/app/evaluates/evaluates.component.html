@@ -5,6 +5,7 @@
     [arrow]="'horizontal'"
     [thumb]="'assets/images/evaluate.svg'"
     multipleLine
-    (onClick)="clickOrder(evaluate.order)">评价店铺: {{evaluate.market.marketName}}
+    (onClick)="clickOrder(evaluate.order)">
+    <div *ngIf="evaluate.market">评价店铺: {{evaluate.market.marketName}}</div>
     <Brief>评价内容: {{evaluate.evaluateDetail}}</Brief>
 </ListItem>

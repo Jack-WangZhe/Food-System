@@ -123,6 +123,8 @@ export class MarketdetailComponent implements OnInit {
   onCancel() {
     this.orderStatus = false;
   }
+
+  clickProduct() {}
 }
 
 class productNumber {
